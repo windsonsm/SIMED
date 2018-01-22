@@ -40,7 +40,7 @@ public class conexaoDB {
 
     
     private static String url;
-    private static final String loginDB = "postgres", senhaDB = "Ne271536";
+    private static final String loginDB = "postgres", senhaDB = "Ne27153688";
 
     
     public static String getUrl() {
