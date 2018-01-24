@@ -17,10 +17,6 @@ public class Bairro extends Cidade{
 
     public void setNomeBairro(String nomeBairro) {
         this.nomeBairro = nomeBairro;
-    }
-
-    
-   
-    
+    } 
     
 }

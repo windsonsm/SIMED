@@ -18,7 +18,7 @@ public class Funcao extends Setor{
     public void setNomefuncao(String nomefuncao) {
         this.nomefuncao = nomefuncao;
     }
-    
-    
+
+ 
     
 }

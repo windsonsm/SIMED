@@ -15,10 +15,10 @@ public class Cidade extends Estado{
         return nomeCidade;
     }
 
-    public void setNome(String nomeCidade) {
+    public void setNomeCidade(String nomeCidade) {
         this.nomeCidade = nomeCidade;
     }
-   
-    
+
+ 
     
 }

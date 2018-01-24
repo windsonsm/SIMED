@@ -18,6 +18,8 @@ public class Exame {
     public void setNomeExame(String nomeExame) {
         this.nomeExame = nomeExame;
     }
+
+    
     
     
 }

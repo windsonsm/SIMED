@@ -18,6 +18,6 @@ public class Resultado extends Exame{
     public void setNomeResultado(String nomeResultado) {
         this.nomeResultado = nomeResultado;
     }
-    
-    
+
+
 }

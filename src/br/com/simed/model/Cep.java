@@ -3,7 +3,7 @@ public class Cep extends Bairro{
     private int codigo;
     private String logradouro;
 
-  public int getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
@@ -18,7 +18,5 @@ public class Cep extends Bairro{
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
-    
-    
-    
+ 
 }

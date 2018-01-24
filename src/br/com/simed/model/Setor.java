@@ -18,6 +18,6 @@ public class Setor extends Empresa{
     public void setNomeSetor(String nomeSetor) {
         this.nomeSetor = nomeSetor;
     }
-    
-    
+
+ 
 }

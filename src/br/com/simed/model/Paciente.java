@@ -102,6 +102,6 @@ public class Paciente extends Cep {
     public void setNumero_casa(String numero_casa) {
         this.numero_casa = numero_casa;
     }
-    
-    
+
+   
 }
