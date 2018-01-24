@@ -19,11 +19,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class modificaLayout {
     //com.sun.java.swing.plaf.windows.WindowsLookAndFeel
     //com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel
-    String seta_look = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
-   
+    //String seta_look = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
+   String seta_look = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
             
     
-    public  void Ninbus() {
+    public  void Set_Layout() {
         try {
             UIManager.setLookAndFeel(seta_look);
             

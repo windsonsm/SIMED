@@ -33,8 +33,31 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="567" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="115" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="157" pref="157" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel_Login" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_Senha" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPassword_Senha" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="jText_Login" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="209" pref="209" max="-2" attributes="0"/>
+                      <Component id="jButton_Conectar" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton_Sair" linkSize="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="215" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,7 +65,22 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel1" min="-2" pref="77" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="223" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel_Login" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jText_Login" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPassword_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButton_Conectar" linkSize="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton_Sair" linkSize="2" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="94" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -51,8 +89,35 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/com/simed/imagens/if_Doctor_128404.png"/>
+          <Image iconType="3" name="/br/com/simed/images/if_Doctor_128404.png"/>
         </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_Login">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Usu&#xe1;rio:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_Senha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Senha:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jText_Login">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jPassword_Senha">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton_Conectar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Conectar..."/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ConectarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton_Sair">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -5,17 +5,9 @@
  */
 package br.com.simed.dao;
 
-import br.com.simed.controller.Encripta;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-
-
-
-
-
-
 
 /**
  *
@@ -28,27 +20,22 @@ public class conexaoDB {
         try {
 
             return DriverManager.getConnection(getUrl(), getLoginDB(), getSenhaDB());
-            
-            
 
         } catch (SQLException se) {
-            throw new SQLException("Erro ao conectar ao Banco de dados" + "\n"+se.getMessage());
-           
+            throw new SQLException("Erro ao conectar ao Banco de dados" + "\n" + se.getMessage());
+
         }
 
     }
 
-    
     private static String url;
-    private static final String loginDB = "postgres", senhaDB = "Ne27153688";
+    private static final String loginDB = "postgres", senhaDB = "Ne271536";
 
-    
     public static String getUrl() {
         return url;
-        
-       
+
     }
-    
+
     public static void setUrl(String aUrl) {
         url = aUrl;
     }
@@ -60,7 +47,5 @@ public class conexaoDB {
     public static String getSenhaDB() {
         return senhaDB;
     }
-
-    
 
 }

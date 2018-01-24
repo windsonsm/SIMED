@@ -5,6 +5,15 @@
  */
 package br.com.simed.view;
 
+import br.com.simed.dao.conexaoDB;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Ranster
@@ -29,31 +38,108 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel_Login = new javax.swing.JLabel();
+        jLabel_Senha = new javax.swing.JLabel();
+        jText_Login = new javax.swing.JTextField();
+        jPassword_Senha = new javax.swing.JPasswordField();
+        jButton_Conectar = new javax.swing.JButton();
+        jButton_Sair = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/simed/imagens/if_Doctor_128404.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/simed/images/if_Doctor_128404.png"))); // NOI18N
+
+        jLabel_Login.setText("Usuário:");
+
+        jLabel_Senha.setText("Senha:");
+
+        jButton_Conectar.setText("Conectar...");
+        jButton_Conectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ConectarActionPerformed(evt);
+            }
+        });
+
+        jButton_Sair.setText("Sair");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 567, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_Login)
+                            .addComponent(jLabel_Senha))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPassword_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jText_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(jButton_Conectar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_Sair)))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton_Conectar, jButton_Sair});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 223, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_Login)
+                    .addComponent(jText_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_Senha)
+                    .addComponent(jPassword_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_Conectar)
+                    .addComponent(jButton_Sair))
+                .addGap(0, 94, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton_Conectar, jButton_Sair});
 
         setSize(new java.awt.Dimension(647, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_ConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ConectarActionPerformed
+            //Recebendo URL do Banco de Dados
+        try {
+            FileInputStream stream = new FileInputStream("urlDB.conf");
+            InputStreamReader reader = new InputStreamReader(stream);
+            BufferedReader br = new BufferedReader(reader);
+            
+            conexaoDB.setUrl(br.readLine());
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Fim
+        
+        JFramePrincipal.getInstancia();       
+        JFramePrincipal.getInstancia().setExtendedState(JFramePrincipal.MAXIMIZED_BOTH);
+        JFramePrincipal.getInstancia().setLocationRelativeTo(null);
+        JFramePrincipal.getInstancia().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton_ConectarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,7 +180,13 @@ public class JFrameLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_Conectar;
+    private javax.swing.JButton jButton_Sair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel_Login;
+    private javax.swing.JLabel jLabel_Senha;
+    private javax.swing.JPasswordField jPassword_Senha;
+    private javax.swing.JTextField jText_Login;
     // End of variables declaration//GEN-END:variables
 }

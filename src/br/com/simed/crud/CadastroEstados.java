@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,58 +28,66 @@ public class CadastroEstados {
     private ResultSet rs;
     
     //Metodo para Incluir Estado
-    public void incluirEstado(Estado estado) throws SQLException{
+    public void incluirEstado(Estado estado) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="INSERT INTO TBL_ESTADOS(E_SIGLA,E_NOME) VALUES (?,?)");
+            stm = con.prepareStatement(sql="INSERT INTO TBL_UF(id_estado,SIGLA,NOME) VALUES (?,?)");
             stm.setString(1, estado.getSiglaEstado());
             stm.setString(2, estado.getNomeEstado());
             stm.execute();
+            JOptionPane.showMessageDialog(null, "Registro Salvo com Sucesso...");
             
             con.close();
             stm.close();
             
         } catch (SQLException | NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Um Erro Ocorreu ao Salvar este Registro");
             Logger.getLogger(CadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
             
         }        
     }
     //Metodo para Excluir Estado
-    public void excluirEstado(Estado estado) throws SQLException{
+    public void excluirEstado(Estado estado) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="DELETE FROM TBL_ESTADOS WHERE E_CODIGO = ?");
+            stm = con.prepareStatement(sql="DELETE FROM tbl_uf WHERE id_estado = ?");
             stm.setInt(1, estado.getCodigoEstado());
             stm.execute();
+            JOptionPane.showMessageDialog(null, "Registro Excluído com Sucesso...");
+            
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Este Registro possui Relacionamento e não poderá ser Excluido");
             Logger.getLogger(CadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
     }
     //Metodo para atualizar Estado
-    public void atualizarEstado(Estado estado) throws SQLException{
+    public void atualizarEstado(Estado estado) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="UPDATE TBL_ESTADOS SET E_NOME=?,E_SIGLA=? WHERE E_CODIGO=?");
+            stm = con.prepareStatement(sql="UPDATE tbl_uf SET nome=?,sigla=? WHERE id_estado=?");
             stm.setString(1, estado.getNomeEstado());
             stm.setString(2, estado.getSiglaEstado());
             stm.setInt(3,estado.getCodigoEstado());
             stm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro Atualizado com Sucesso...");
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar Registro ...");
             Logger.getLogger(CadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
     //Metodo para listar os estados
-    public ArrayList listarEstados(){
+    public ArrayList listarEstados(Estado estado){
         ArrayList dados = new ArrayList();
         try {
              con = conexaoDB.getConexao();
-             stm = con.prepareStatement(sql="SELECT E_CODIGO,E_NOME,E_SIGLA FROM TBL_ESTADOS ORDER BY E_CODIGO");
+             stm = con.prepareStatement(sql="SELECT * FROM tbl_uf WHERE NOME LIKE ? ORDER BY id_estado");
+             stm.setString(1,estado.getNomeEstado()+"%");
              rs = stm.executeQuery();
              
              while(rs.next()){
-                  dados.add(new Object[]{rs.getInt("e_codigo"),rs.getString("e_nome"),rs.getString("e_sigla")});
+                  dados.add(new Object[]{rs.getInt("id_estado"),rs.getString("nome"),rs.getString("sigla")});
              }
              con.close();
              stm.close();
@@ -90,31 +99,7 @@ public class CadastroEstados {
         }
         return dados;
     }
-    //Metodo para buscar estado por Nome
-    public ArrayList localizarEstado(Estado estado) throws SQLException {
-       ArrayList dados = new ArrayList();
-        
-        
-        try{
-            con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="SELECT E_CODIGO,E_NOME,E_SIGLA FROM TBL_ESTADOS WHERE E_NOME LIKE ?");
-            stm.setString(1,estado.getNomeEstado()+"%");
-            rs = stm.executeQuery();
-            
-            while(rs.next()) {
-                dados.add(new Object[]{rs.getInt("e_codigo"),rs.getString("e_nome"),rs.getString("e_sigla")});
-            }
-            con.close();
-            rs.close();
-            stm.close();            
-            
-            
-        }catch(SQLException | NullPointerException ex) {
-            Logger.getLogger(CadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dados;
-        
-    }
+   
     
     
     
