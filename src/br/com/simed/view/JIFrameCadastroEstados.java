@@ -196,7 +196,7 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton_Sair)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton_Excluir, jButton_Ignorar, jButton_Novo, jButton_Sair, jButton_Salvar});
@@ -232,8 +232,13 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-        salvar();
-        novo();
+        if(!(jText_NomeEstado.getText().isEmpty() | jText_SiglaEstado.getText().isEmpty()| jText_IdEstado.getText().isEmpty())){
+            atualizar();
+            novo();
+        }else{
+            salvar();
+            novo();
+        }
     }//GEN-LAST:event_jButton_SalvarActionPerformed
 
     private void jText_Buscar_NomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jText_Buscar_NomeCaretUpdate
@@ -243,7 +248,8 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
     private void jTable_Estados_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Estados_CadastradosMouseClicked
          if(evt.getClickCount() == 2) {
             
-            
+            jText_NomeEstado.setEditable(true);
+            jText_SiglaEstado.setEditable(true);
             int linha = jTable_Estados_Cadastrados.getSelectedRow();
             jText_IdEstado.setText(String.valueOf(jTable_Estados_Cadastrados.getValueAt(linha, 0)));      
             jText_NomeEstado.setText(String.valueOf(jTable_Estados_Cadastrados.getValueAt(linha, 1)));
@@ -367,9 +373,20 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
 
     }
     
-   
-    
-    
+   private void atualizar() {
+        
+        if(!(jText_NomeEstado.getText().isEmpty() | jText_SiglaEstado.getText().isEmpty())){
+            Estado estado = new Estado();
+            estado.setNomeEstado(jText_NomeEstado.getText().trim().toUpperCase());
+            estado.setSiglaEstado(jText_SiglaEstado.getText().trim().toUpperCase());
+            estado.setCodigoEstado(Integer.valueOf(jText_IdEstado.getText().trim()));
+            
 
-
+            CadastroEstados atualizar = new CadastroEstados();
+            atualizar.atualizarEstado(estado);
+            novo();
+        }else{
+            JOptionPane.showMessageDialog(this, "Dados Inválidos");
+        }
+    }
 }

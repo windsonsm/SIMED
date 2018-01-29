@@ -28,6 +28,7 @@ public class JIFrameCadastroCidade extends javax.swing.JInternalFrame {
     public JIFrameCadastroCidade() {
         initComponents();
         TabelaCidadeCadastrados();
+        
         }
     
     
@@ -231,9 +232,16 @@ public void setPosicao() {
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-        salvar();
-        novo();
-        TabelaCidadeCadastrados();
+         if(!(jText_IdCidade.getText().isEmpty() | jText_NomeCidade.getText().isEmpty()| CBEstado.getSelectedItem().toString().isEmpty())){
+            atualizar();
+            novo();
+            TabelaCidadeCadastrados();
+        }else{
+            salvar();
+            novo();
+            TabelaCidadeCadastrados();
+        }
+        
     }//GEN-LAST:event_jButton_SalvarActionPerformed
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
@@ -365,6 +373,23 @@ private void novo() {
 
         }else{
             JOptionPane.showMessageDialog(this, "Nenhum Registro Foi Selecionado ...");
+        }
+    }
+       private void atualizar() {
+        
+        if(!(jText_NomeCidade.getText().isEmpty() | CBEstado.getSelectedItem().toString().isEmpty())){
+            Cidade cidade = new Cidade();
+            cidade.setNome(jText_NomeCidade.getText().trim().toUpperCase());
+            int codEstado = ((Estado) CBEstado.getSelectedItem()).getCodigoEstado();
+            cidade.setCodigoEstado(codEstado);
+            cidade.setCodigocidade(Integer.valueOf(jText_IdCidade.getText().trim()));
+            
+
+            CadastroCidade atualizar = new CadastroCidade();
+            atualizar.atualizarCidade(cidade);
+            novo();
+        }else{
+            JOptionPane.showMessageDialog(this, "Dados Inválidos");
         }
     }
 

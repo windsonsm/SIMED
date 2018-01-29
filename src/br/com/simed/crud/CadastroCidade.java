@@ -19,12 +19,28 @@ public class CadastroCidade {
     private PreparedStatement stm;
     private String sql;
     private ResultSet rs;
+     
     
+    public void atualizarCidade(Cidade cidade) {
+        try {
+            con = conexaoDB.getConexao();
+            stm = con.prepareStatement(sql="UPDATE tbl_cidades SET nome=?,id_estado=? WHERE id_cidade=?");
+            stm.setString(1, cidade.getNomeCidade());
+            stm.setInt(2, cidade.getCodigoEstado());
+            stm.setInt(3,cidade.getCodigocidade());
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro Atualizado com Sucesso...");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar Registro ...");
+            Logger.getLogger(CadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
 public void listaEstado(JComboBox e){
       try {
           con = conexaoDB.getConexao();
-          stm = con.prepareStatement(sql="SELECT id_estado,nome FROM tbl_uf WHERE NOME LIKE ? ORDER BY id_cidade ");
+          stm = con.prepareStatement(sql="SELECT id_estado,nome FROM tbl_uf");
           rs = stm.executeQuery();
           
       while(rs.next()){
@@ -32,7 +48,7 @@ public void listaEstado(JComboBox e){
           estado.setCodigoEstado(rs.getInt("id_estado"));
           estado.setNomeEstado(rs.getString("nome"));
           e.addItem(estado);
-              //estado.addItem(rs.getInt("id_estado")+" . "+rs.getString("nome"));
+              //e.addItem(rs.getInt("id_estado")+" . "+rs.getString("nome"));
           }
           
           con.close();

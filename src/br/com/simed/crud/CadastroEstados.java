@@ -65,9 +65,9 @@ public class CadastroEstados {
     public void atualizarEstado(Estado estado) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="UPDATE tbl_uf SET nome=?,sigla=? WHERE id_estado=?");
-            stm.setString(1, estado.getNomeEstado());
-            stm.setString(2, estado.getSiglaEstado());
+            stm = con.prepareStatement(sql="UPDATE tbl_uf SET sigla=?,nome=? WHERE id_estado=?");
+            stm.setString(1, estado.getSiglaEstado());
+            stm.setString(2, estado.getNomeEstado());
             stm.setInt(3,estado.getCodigoEstado());
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro Atualizado com Sucesso...");
