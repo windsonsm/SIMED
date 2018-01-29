@@ -5,6 +5,7 @@
  */
 package br.com.simed.view;
 
+import java.awt.Dimension;
 import java.beans.PropertyVetoException;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
@@ -17,6 +18,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
    
     private static JFramePrincipal p;
     private static JIFrameCadastroEstados CadastroEstados;
+    private static JIFrameCadastroCidade CadastroCidades;
    
       
     
@@ -42,6 +44,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuCadastroEstados = new javax.swing.JMenuItem();
+        jMenuCadastrocidades = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -81,6 +84,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuCadastroEstados);
+
+        jMenuCadastrocidades.setText("Cadastro de Cidades");
+        jMenuCadastrocidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastrocidadesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCadastrocidades);
 
         jMenuBar1.add(jMenu1);
 
@@ -126,6 +137,21 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuCadastroEstadosActionPerformed
 
+    private void jMenuCadastrocidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrocidadesActionPerformed
+         if (CadastroCidades == null) {
+            CadastroCidades = new JIFrameCadastroCidade();
+            JDesktopPanePrincipal.add(CadastroCidades);
+            CadastroCidades.setVisible(true);
+            CadastroCidades.setPosicao();
+        } else {
+            try {
+                CadastroCidades.setSelected(true);
+            } catch (PropertyVetoException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+            }
+        }
+    }//GEN-LAST:event_jMenuCadastrocidadesActionPerformed
+
     //Libera acesso ao Frame Principal
     public static JFramePrincipal getInstancia() {
 
@@ -143,6 +169,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     //Informa ao JDesktopPane que a janela foi encerrada 
     public static void setTelaNull() {
         CadastroEstados = null;
+        CadastroCidades = null;
 
     }
       
@@ -168,6 +195,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadastroEstados;
+    private javax.swing.JMenuItem jMenuCadastrocidades;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables

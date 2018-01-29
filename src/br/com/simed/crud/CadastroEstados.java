@@ -31,7 +31,7 @@ public class CadastroEstados {
     public void incluirEstado(Estado estado) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="INSERT INTO TBL_UF(id_estado,SIGLA,NOME) VALUES (?,?)");
+            stm = con.prepareStatement(sql="INSERT INTO TBL_UF(SIGLA,NOME) VALUES (?,?)");
             stm.setString(1, estado.getSiglaEstado());
             stm.setString(2, estado.getNomeEstado());
             stm.execute();
@@ -101,7 +101,31 @@ public class CadastroEstados {
     }
    
     
-    
+     public ArrayList read (){
+        ArrayList dados = new ArrayList();
+        try {
+             con = conexaoDB.getConexao();
+             stm = con.prepareStatement(sql="SELECT * FROM tbl_uf WHERE NOME LIKE ? ORDER BY id_estado");
+             rs = stm.executeQuery();
+             
+             while(rs.next()){
+                  //dados.add(new Object[]{rs.getInt("id_estado"),rs.getString("nome"),rs.getString("sigla")});
+                  Estado estado = new Estado();
+                  estado.setCodigoEstado(rs.getInt("id_estado"));
+                  estado.setNomeEstado(rs.getString("nome"));
+                  estado.setSiglaEstado(rs.getString("sigla"));
+                  dados.add(estado);
+             }
+             con.close();
+             stm.close();
+             rs.close();
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dados;
+    }
     
     
     

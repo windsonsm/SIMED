@@ -28,5 +28,10 @@ public class Estado {
         this.siglaEstado = siglaEstado;
     }
     
+    @Override
+  public String toString(){
+      return getNomeEstado();
+  } 
+    
     
 }
