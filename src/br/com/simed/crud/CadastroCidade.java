@@ -24,7 +24,7 @@ public class CadastroCidade {
     public void atualizarCidade(Cidade cidade) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="UPDATE tbl_cidades SET nome=?,id_estado=? WHERE id_cidade=?");
+            stm = con.prepareStatement(sql="UPDATE tbl_cidades SET nomeCidade=?,id_estado=? WHERE id_cidade=?");
             stm.setString(1, cidade.getNomeCidade());
             stm.setInt(2, cidade.getCodigoEstado());
             stm.setInt(3,cidade.getCodigocidade());
@@ -40,13 +40,13 @@ public class CadastroCidade {
 public void listaEstado(JComboBox e){
       try {
           con = conexaoDB.getConexao();
-          stm = con.prepareStatement(sql="SELECT id_estado,nome FROM tbl_uf");
+          stm = con.prepareStatement(sql="SELECT id_estado,nomeEstado FROM tbl_uf");
           rs = stm.executeQuery();
           
       while(rs.next()){
           Estado estado = new Estado();
           estado.setCodigoEstado(rs.getInt("id_estado"));
-          estado.setNomeEstado(rs.getString("nome"));
+          estado.setNomeEstado(rs.getString("nomeEstado"));
           e.addItem(estado);
               //e.addItem(rs.getInt("id_estado")+" . "+rs.getString("nome"));
           }
@@ -61,7 +61,7 @@ public void listaEstado(JComboBox e){
      public void IncluirCidade(Cidade c) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="INSERT INTO tbl_cidades (Nome,id_estado) VALUES (?,?)");
+            stm = con.prepareStatement(sql="INSERT INTO tbl_cidades (NomeCidade,id_estado) VALUES (?,?)");
             stm.setString(1, c.getNomeCidade());
             stm.setInt(2, c.getCodigoEstado());
             stm.execute();
@@ -81,12 +81,12 @@ public void listaEstado(JComboBox e){
         ArrayList dados = new ArrayList();
         try {
              con = conexaoDB.getConexao();
-             stm = con.prepareStatement(sql="SELECT * FROM tbl_cidades WHERE NOME LIKE ? ORDER BY id_cidade");
+             stm = con.prepareStatement(sql="SELECT C.id_cidade,C.nomeCidade,E.sigla FROM tbl_cidades C, tbl_uf E WHERE C.id_estado = E.id_estado  and nomeCidade LIKE ? ORDER BY C.id_cidade");
              stm.setString(1,cidade.getNomeCidade()+"%");
              rs = stm.executeQuery();
              
              while(rs.next()){
-                  dados.add(new Object[]{rs.getInt("id_cidade"),rs.getString("nome"),rs.getString("id_estado")});
+                  dados.add(new Object[]{rs.getInt("id_cidade"),rs.getString("nomeCidade"),rs.getString("sigla")});
              }
              con.close();
              stm.close();

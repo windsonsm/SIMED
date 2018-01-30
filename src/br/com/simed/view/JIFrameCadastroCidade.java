@@ -156,7 +156,7 @@ public void setPosicao() {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +341,7 @@ private void novo() {
         cidade.setNome(jText_Buscar_Nome.getText().toUpperCase().trim());
         
         ArrayList dados = cidades_cadastrados.listarCidade(cidade);
-        String[] colunas = new String[]{"ID", "NOME", "ID_ESTADO"};
+        String[] colunas = new String[]{"ID", "NOME", "SIGLA"};
         Tabela modelo = new Tabela(dados, colunas);
         jTable_Cidades_Cadastrados.setModel(modelo);
         jTable_Cidades_Cadastrados.getColumnModel().getColumn(0).setPreferredWidth(80);
