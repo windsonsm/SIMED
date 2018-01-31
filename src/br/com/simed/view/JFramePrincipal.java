@@ -20,6 +20,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private static JIFrameCadastroEstados CadastroEstados;
     private static JIFrameCadastroCidade CadastroCidades;
     private static JIFrameCadastroBairros CadastroBairros;
+    private static JIFrameCadastroCep CadastroCep;
    
       
     
@@ -44,10 +45,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuCadastroEstados = new javax.swing.JMenuItem();
-        jMenuCadastrocidades = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuCadastrocidades = new javax.swing.JMenuItem();
+        jMenuCadastroEstados = new javax.swing.JMenuItem();
+        jMenuCadastroCep = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -79,14 +81,15 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Cadastros");
+        jMenu1.add(jSeparator1);
 
-        jMenuCadastroEstados.setText("Cadastro de Estados");
-        jMenuCadastroEstados.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Cadastro de Bairros");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCadastroEstadosActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuCadastroEstados);
+        jMenu1.add(jMenuItem1);
 
         jMenuCadastrocidades.setText("Cadastro de Cidades");
         jMenuCadastrocidades.addActionListener(new java.awt.event.ActionListener() {
@@ -96,14 +99,21 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuCadastrocidades);
 
-        jMenuItem1.setText("Cadastro de Bairros");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuCadastroEstados.setText("Cadastro de Estados");
+        jMenuCadastroEstados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuCadastroEstadosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
-        jMenu1.add(jSeparator1);
+        jMenu1.add(jMenuCadastroEstados);
+
+        jMenuCadastroCep.setText("Cadastro de Cep");
+        jMenuCadastroCep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastroCepActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCadastroCep);
 
         jMenuBar1.add(jMenu1);
 
@@ -129,7 +139,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JDesktopPanePrincipal)
+            .addComponent(JDesktopPanePrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -188,6 +198,21 @@ public class JFramePrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuCadastroCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastroCepActionPerformed
+        if (CadastroCep == null) {
+            CadastroCep = new JIFrameCadastroCep();
+            JDesktopPanePrincipal.add(CadastroCep);
+            CadastroCep.setVisible(true);
+            CadastroCep.setPosicao();
+        } else {
+            try {
+                CadastroEstados.setSelected(true);
+            } catch (PropertyVetoException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+            }
+        }
+    }//GEN-LAST:event_jMenuCadastroCepActionPerformed
+
     //Libera acesso ao Frame Principal
     public static JFramePrincipal getInstancia() {
 
@@ -207,6 +232,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         CadastroEstados = null;
         CadastroCidades = null;
         CadastroBairros = null;
+        CadastroCep = null;
 
     }
       
@@ -231,6 +257,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuCadastroCep;
     private javax.swing.JMenuItem jMenuCadastroEstados;
     private javax.swing.JMenuItem jMenuCadastrocidades;
     private javax.swing.JMenuItem jMenuItem1;

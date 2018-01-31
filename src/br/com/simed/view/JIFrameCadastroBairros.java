@@ -313,9 +313,7 @@ private void novo() {
         }else{
             JOptionPane.showMessageDialog(this, "Dados Inválidos");
         }
-     
-
-    }
+     }
   
  public void TabelaBairroCadastrados() {
         
