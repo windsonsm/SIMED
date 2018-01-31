@@ -363,8 +363,8 @@ private void novo() {
         if(!(jText_NomeBairro.getText().isEmpty() | CBCidade.getSelectedItem().toString().isEmpty())){
             Bairro bairro = new Bairro();
             bairro.setNomeBairro(jText_NomeBairro.getText().trim().toUpperCase());
-            int codBairro = ((Estado) CBCidade.getSelectedItem()).getCodigoEstado();
-            bairro.setCodigocidade(codBairro);
+            int codCidade = ((Cidade) CBCidade.getSelectedItem()).getCodigocidade();
+            bairro.setCodigocidade(codCidade);
             bairro.setCodigobairro(Integer.valueOf(jText_IdBairro.getText().trim()));
             
 

@@ -89,7 +89,7 @@ public class CadastroBairro {
         try {
             con = conexaoDB.getConexao();
             stm = con.prepareStatement(sql="UPDATE tbl_bairros SET nomeBairro=?,id_cidade=? WHERE id_bairro=?");
-            stm.setString(1, bairro.getNomeCidade());
+            stm.setString(1, bairro.getNomeBairro());
             stm.setInt(2, bairro.getCodigocidade());
             stm.setInt(3,bairro.getCodigobairro());
             stm.executeUpdate();
