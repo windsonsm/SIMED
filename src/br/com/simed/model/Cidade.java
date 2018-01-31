@@ -19,6 +19,9 @@ public class Cidade extends Estado{
         this.nomeCidade = nomeCidade;
     }
    
-    
+    @Override
+  public String toString(){
+      return getNomeCidade();
+  } 
     
 }

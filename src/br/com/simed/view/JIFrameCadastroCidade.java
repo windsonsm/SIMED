@@ -246,6 +246,8 @@ public void setPosicao() {
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
         limparCampos();
+        jText_NomeCidade.setEnabled(false);
+        CBEstado.setEnabled(false);
 
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 

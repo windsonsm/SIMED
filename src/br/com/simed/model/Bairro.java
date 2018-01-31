@@ -20,7 +20,10 @@ public class Bairro extends Cidade{
     }
 
     
-   
+   @Override
+  public String toString(){
+      return getNomeBairro();
+  } 
     
     
 }

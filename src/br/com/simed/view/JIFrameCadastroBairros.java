@@ -8,6 +8,7 @@ package br.com.simed.view;
 import br.com.simed.crud.CadastroBairro;
 import br.com.simed.crud.CadastroCidade;
 import br.com.simed.model.Bairro;
+import br.com.simed.model.Cidade;
 import br.com.simed.model.Estado;
 import br.com.simed.model.Tabela;
 import java.awt.Dimension;
@@ -27,6 +28,8 @@ public class JIFrameCadastroBairros extends javax.swing.JInternalFrame {
     public JIFrameCadastroBairros() {
         initComponents();
         TabelaBairroCadastrados();
+       
+
     }
 public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
@@ -35,8 +38,8 @@ public void setPosicao() {
     }
  public void listarBairro(){
          
-          CadastroCidade c = new CadastroCidade();
-          c.listaEstado(CBCidade);
+          CadastroBairro c = new CadastroBairro();
+          c.listaCidade(CBCidade);
           
      } 
     /**
@@ -68,8 +71,6 @@ public void setPosicao() {
         jLabel1.setText("Nome: ");
 
         jLabel2.setText("Cidade:");
-
-        CBCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton_Ignorar.setText("Ignorar");
         jButton_Ignorar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,43 +140,40 @@ public void setPosicao() {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jText_Buscar_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(CBCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton_Novo)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton_Salvar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton_Excluir)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton_Ignorar))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(jText_NomeBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jText_IdBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(166, 166, 166)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(CBCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton_Novo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton_Salvar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton_Excluir)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton_Ignorar))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jText_NomeBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jText_IdBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(166, 166, 166)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jText_Buscar_Nome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +196,7 @@ public void setPosicao() {
                     .addComponent(jButton_Salvar)
                     .addComponent(jButton_Excluir)
                     .addComponent(jButton_Ignorar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jText_Buscar_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,6 +210,8 @@ public void setPosicao() {
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
         limparCampos();
+        jText_NomeBairro.setEnabled(false);
+        CBCidade.setEnabled(false);
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
     private void jText_Buscar_NomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jText_Buscar_NomeCaretUpdate
@@ -226,9 +226,9 @@ public void setPosicao() {
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-        if(!(jText_IdBairro.getText().isEmpty() | jText_NomeBairro.getText().isEmpty()| CBCidade.getSelectedItem().toString().isEmpty())){
-            atualizar();
-            novo();
+       if(!(jText_IdBairro.getText().isEmpty() | jText_NomeBairro.getText().isEmpty()| CBCidade.getSelectedItem().toString().isEmpty())){
+           atualizar();
+           novo();
             TabelaBairroCadastrados();
         }else{
             salvar();
@@ -297,17 +297,18 @@ private void novo() {
 
        
     }
-  private void salvar() {
+   private void salvar() {
         
         if(!(jText_NomeBairro.getText().isEmpty() | CBCidade.getSelectedItem().toString().isEmpty())){
-            Bairro cidade = new Bairro();
+            Bairro bairro = new Bairro();
             
-            cidade.setNome(jText_NomeBairro.getText().trim().toUpperCase());
-            int codEstado = ((Estado) CBCidade.getSelectedItem()).getCodigoEstado();
-            cidade.setCodigoEstado(codEstado);
-
+            bairro.setNomeBairro(jText_NomeBairro.getText().trim().toUpperCase());
+            int codBairro = ((Cidade) CBCidade.getSelectedItem()).getCodigocidade();
+            bairro.setCodigocidade(codBairro);
+            System.out.println("aqui : "+ bairro.getNomeBairro());
+            System.out.println("aqui : "+ bairro.getCodigocidade());
             CadastroBairro cadastrar = new CadastroBairro();
-           // cadastrar.IncluirBairro(cidade);
+            cadastrar.IncluirBairro(bairro);
             novo();
         }else{
             JOptionPane.showMessageDialog(this, "Dados Inválidos");
@@ -339,17 +340,17 @@ private void novo() {
 
     }
     private void excluir() {
-        if (!(jText_NomeBairro.getText().isEmpty() && CBCidade.getSelectedItem().toString().isEmpty())) {
+        if (!(jText_NomeBairro.getText().isEmpty() && jText_IdBairro.getText().isEmpty())) {
 
             int opcao = JOptionPane.showConfirmDialog(this, "Deseja Realmente Excluir este Registro", "", JOptionPane.YES_NO_OPTION);
             boolean resposta;
             resposta = opcao == JOptionPane.YES_OPTION;
             if (resposta) {
-                Bairro cidade = new Bairro();
-                cidade.setCodigocidade(Integer.valueOf(jText_IdBairro.getText().trim()));
+                Bairro bairro = new Bairro();
+                bairro.setCodigobairro(Integer.valueOf(jText_IdBairro.getText().trim()));
 
-                CadastroBairro excluir_cidade = new CadastroBairro();
-             // excluir_cidade.excluirBairro(cidade);
+                CadastroBairro excluir = new CadastroBairro();
+                excluir.excluirBairro(bairro);
                 limparCampos();
             }
 
@@ -360,15 +361,15 @@ private void novo() {
        private void atualizar() {
         
         if(!(jText_NomeBairro.getText().isEmpty() | CBCidade.getSelectedItem().toString().isEmpty())){
-            Bairro cidade = new Bairro();
-            cidade.setNome(jText_NomeBairro.getText().trim().toUpperCase());
-            int codEstado = ((Estado) CBCidade.getSelectedItem()).getCodigoEstado();
-            cidade.setCodigoEstado(codEstado);
-            cidade.setCodigocidade(Integer.valueOf(jText_IdBairro.getText().trim()));
+            Bairro bairro = new Bairro();
+            bairro.setNomeBairro(jText_NomeBairro.getText().trim().toUpperCase());
+            int codBairro = ((Estado) CBCidade.getSelectedItem()).getCodigoEstado();
+            bairro.setCodigocidade(codBairro);
+            bairro.setCodigobairro(Integer.valueOf(jText_IdBairro.getText().trim()));
             
 
             CadastroBairro atualizar = new CadastroBairro();
-           // atualizar.atualizarBairro(cidade);
+            atualizar.atualizarBairro(bairro);
             novo();
         }else{
             JOptionPane.showMessageDialog(this, "Dados Inválidos");
