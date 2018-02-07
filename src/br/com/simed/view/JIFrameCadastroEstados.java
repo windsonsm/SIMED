@@ -246,7 +246,7 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jText_Buscar_NomeCaretUpdate
 
     private void jTable_Estados_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Estados_CadastradosMouseClicked
-         if(evt.getClickCount() == 2) {
+        if(evt.getClickCount() == 2) {
             
             jText_NomeEstado.setEditable(true);
             jText_SiglaEstado.setEditable(true);
@@ -305,9 +305,7 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Dados Inválidos");
         }
-     
-
-    }
+     }
     
     private void limparCampos() {
         jText_IdEstado.setText("");

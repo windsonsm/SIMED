@@ -56,34 +56,30 @@ public void setPosicao() {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jText_IdCidade = new javax.swing.JTextField();
         CBEstado = new javax.swing.JComboBox<>();
-        jButton_Novo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jText_NomeCidade = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton_Ignorar = new javax.swing.JButton();
+        jButton_Excluir = new javax.swing.JButton();
         jButton_Salvar = new javax.swing.JButton();
+        jButton_Novo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Cidades_Cadastrados = new javax.swing.JTable();
-        jButton_Sair = new javax.swing.JButton();
-        jButton_Excluir = new javax.swing.JButton();
-        jButton_Ignorar = new javax.swing.JButton();
         jText_Buscar_Nome = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jText_IdCidade = new javax.swing.JTextField();
+        jButton_Sair = new javax.swing.JButton();
 
         setTitle("Cadastro de Cidades - SIMED");
+
+        jText_IdCidade.setEnabled(false);
 
         CBEstado.setEnabled(false);
         CBEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBEstadoActionPerformed(evt);
-            }
-        });
-
-        jButton_Novo.setText("novo");
-        jButton_Novo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_NovoActionPerformed(evt);
             }
         });
 
@@ -93,10 +89,33 @@ public void setPosicao() {
 
         jLabel2.setText("Estado: ");
 
+        jLabel3.setText("ID Estado:");
+
+        jButton_Ignorar.setText("Ignorar");
+        jButton_Ignorar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_IgnorarActionPerformed(evt);
+            }
+        });
+
+        jButton_Excluir.setText("Excluir");
+        jButton_Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ExcluirActionPerformed(evt);
+            }
+        });
+
         jButton_Salvar.setText("Salvar");
         jButton_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_SalvarActionPerformed(evt);
+            }
+        });
+
+        jButton_Novo.setText("novo");
+        jButton_Novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_NovoActionPerformed(evt);
             }
         });
 
@@ -118,6 +137,12 @@ public void setPosicao() {
         });
         jScrollPane1.setViewportView(jTable_Cidades_Cadastrados);
 
+        jText_Buscar_Nome.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jText_Buscar_NomeCaretUpdate(evt);
+            }
+        });
+
         jButton_Sair.setText("Sair");
         jButton_Sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,114 +150,128 @@ public void setPosicao() {
             }
         });
 
-        jButton_Excluir.setText("Excluir");
-        jButton_Excluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ExcluirActionPerformed(evt);
-            }
-        });
-
-        jButton_Ignorar.setText("Ignorar");
-        jButton_Ignorar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_IgnorarActionPerformed(evt);
-            }
-        });
-
-        jText_Buscar_Nome.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jText_Buscar_NomeCaretUpdate(evt);
-            }
-        });
-
-        jLabel3.setText("ID Estado:");
-
-        jText_IdCidade.setEnabled(false);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jText_Buscar_Nome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jText_NomeCidade)
-                                    .addComponent(CBEstado, 0, 201, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jText_NomeCidade)
+                                            .addComponent(CBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jText_IdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton_Novo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton_Salvar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton_Excluir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton_Ignorar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jText_IdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jButton_Ignorar)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jText_Buscar_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jText_IdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jText_NomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(CBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_Novo)
                     .addComponent(jButton_Salvar)
                     .addComponent(jButton_Excluir)
                     .addComponent(jButton_Ignorar))
-                .addGap(8, 8, 8)
+                .addGap(27, 27, 27)
                 .addComponent(jText_Buscar_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton_Sair)
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CBEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBEstadoActionPerformed
-
-    private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
-        listarSigla();
-        novo();
+    private void jText_Buscar_NomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jText_Buscar_NomeCaretUpdate
         TabelaCidadeCadastrados();
+    }//GEN-LAST:event_jText_Buscar_NomeCaretUpdate
+
+    private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
         limparCampos();
-    }//GEN-LAST:event_jButton_NovoActionPerformed
+        jText_NomeCidade.setEnabled(false);
+        CBEstado.setEnabled(false);
+    }//GEN-LAST:event_jButton_IgnorarActionPerformed
+
+    private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
+        excluir();
+        TabelaCidadeCadastrados();
+    }//GEN-LAST:event_jButton_ExcluirActionPerformed
+
+    private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SairActionPerformed
+        dispose();
+        JFramePrincipal.setTelaNull();
+    }//GEN-LAST:event_jButton_SairActionPerformed
+
+    private void jTable_Cidades_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Cidades_CadastradosMouseClicked
+        if(evt.getClickCount() == 2) {
+
+            int linha = jTable_Cidades_Cadastrados.getSelectedRow();
+            jText_IdCidade.setText(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 0)));
+            jText_NomeCidade.setText(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 1)));
+            CBEstado.setSelectedItem(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 2)));
+
+            //  CBEstado.getSelectedItem().toString(jTable_Cidades_Cadastrados.getValueAt(linha, 1));
+
+        }
+    }//GEN-LAST:event_jTable_Cidades_CadastradosMouseClicked
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-         if(!(jText_IdCidade.getText().isEmpty() | jText_NomeCidade.getText().isEmpty()| CBEstado.getSelectedItem().toString().isEmpty())){
+        if(!(jText_IdCidade.getText().isEmpty() | jText_NomeCidade.getText().isEmpty()| CBEstado.getSelectedItem().toString().isEmpty())){
             atualizar();
             novo();
             TabelaCidadeCadastrados();
@@ -241,44 +280,18 @@ public void setPosicao() {
             novo();
             TabelaCidadeCadastrados();
         }
-        
     }//GEN-LAST:event_jButton_SalvarActionPerformed
 
-    private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
-        limparCampos();
-        jText_NomeCidade.setEnabled(false);
-        CBEstado.setEnabled(false);
-
-    }//GEN-LAST:event_jButton_IgnorarActionPerformed
-
-    private void jTable_Cidades_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Cidades_CadastradosMouseClicked
-       if(evt.getClickCount() == 2) {
-            
-            
-            int linha = jTable_Cidades_Cadastrados.getSelectedRow();
-            jText_IdCidade.setText(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 0)));      
-            jText_NomeCidade.setText(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 1)));
-            CBEstado.setSelectedItem(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 2)));
-
-          //  CBEstado.getSelectedItem().toString(jTable_Cidades_Cadastrados.getValueAt(linha, 1));
-            
-            
-        }
-    }//GEN-LAST:event_jTable_Cidades_CadastradosMouseClicked
-
-    private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
-                excluir();
-                TabelaCidadeCadastrados();
-    }//GEN-LAST:event_jButton_ExcluirActionPerformed
-
-    private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SairActionPerformed
-        dispose();
-        JFramePrincipal.setTelaNull();
-    }//GEN-LAST:event_jButton_SairActionPerformed
-
-    private void jText_Buscar_NomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jText_Buscar_NomeCaretUpdate
+    private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
+        listarSigla();
+        novo();
         TabelaCidadeCadastrados();
-    }//GEN-LAST:event_jText_Buscar_NomeCaretUpdate
+        limparCampos();
+    }//GEN-LAST:event_jButton_NovoActionPerformed
+
+    private void CBEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBEstadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -291,6 +304,9 @@ public void setPosicao() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable_Cidades_Cadastrados;
@@ -332,9 +348,7 @@ private void novo() {
         }else{
             JOptionPane.showMessageDialog(this, "Dados Inválidos");
         }
-     
-
-    }
+     }
   
  public void TabelaCidadeCadastrados() {
         
@@ -377,7 +391,7 @@ private void novo() {
             JOptionPane.showMessageDialog(this, "Nenhum Registro Foi Selecionado ...");
         }
     }
-       private void atualizar() {
+    private void atualizar() {
         
         if(!(jText_NomeCidade.getText().isEmpty() | CBEstado.getSelectedItem().toString().isEmpty())){
             Cidade cidade = new Cidade();
@@ -394,5 +408,6 @@ private void novo() {
             JOptionPane.showMessageDialog(this, "Dados Inválidos");
         }
     }
+       
 
 }

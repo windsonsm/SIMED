@@ -2,10 +2,10 @@ package br.com.simed.model;
 public class Empresa extends Cep{
     private int codigo_empresa;
     private String nomeEmpresa;
-    private String cnpj;
-    private String inscricaoEstadual;
-    private String numero;
-    private String telefone;
+    private int cnpj;
+    private int inscricaoEstadual;
+    private int numero;
+    private int telefone;
     private String email;
     private String site;
 
@@ -25,35 +25,35 @@ public class Empresa extends Cep{
         this.nomeEmpresa = nomeEmpresa;
     }
 
-    public String getCnpj() {
+    public int getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
+    public void setCnpj(int cnpj) {
         this.cnpj = cnpj;
     }
 
-    public String getInscricaoEstadual() {
+    public int getInscricaoEstadual() {
         return inscricaoEstadual;
     }
 
-    public void setInscricaoEstadual(String inscricaoEstadual) {
+    public void setInscricaoEstadual(int inscricaoEstadual) {
         this.inscricaoEstadual = inscricaoEstadual;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
-    public String getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
@@ -72,6 +72,7 @@ public class Empresa extends Cep{
     public void setSite(String site) {
         this.site = site;
     }
+
     
     
     

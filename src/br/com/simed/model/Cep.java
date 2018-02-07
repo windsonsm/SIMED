@@ -4,7 +4,7 @@ public class Cep extends Bairro{
     private String logradouro;
 
   public int getCodigo() {
-        return codigo;
+      return codigo;
     }
 
     public void setCodigo(int codigo) {
@@ -18,7 +18,15 @@ public class Cep extends Bairro{
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
+  
     
     
-    
+ @Override
+  public String toString(){
+      String codigo = String.valueOf(getCodigo());
+      return codigo;
+  } 
+  
+  
+  
 }

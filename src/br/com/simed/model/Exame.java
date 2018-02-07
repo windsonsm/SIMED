@@ -18,6 +18,11 @@ public class Exame {
     public void setNomeExame(String nomeExame) {
         this.nomeExame = nomeExame;
     }
+
+    @Override
+  public String toString(){
+      return getNomeExame();
+  }
     
     
 }
