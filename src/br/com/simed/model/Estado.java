@@ -31,6 +31,7 @@ public class Estado {
     @Override
   public String toString(){
       return getNomeEstado();
+     // return String.valueOf(getCodigoEstado());
   } 
     
     

@@ -30,12 +30,12 @@ public class CadastroBairro {
         try {
              con = conexaoDB.getConexao();
             // stm = con.prepareStatement(sql="SELECT * FROM tbl_bairros WHERE NOME LIKE ? ORDER BY id_bairro");
-             stm = con.prepareStatement(sql="SELECT  B.Id_bairro, B.nomeBairro, C.nomeCidade FROM tbl_bairros B, tbl_cidades C WHERE B.id_cidade = C.id_cidade and B.nomeBairro LIKE ? ORDER BY B.id_bairro");
+             stm = con.prepareStatement(sql="SELECT  B.Id_bairro, B.nome_bairro, C.nome_cidade FROM tbl_bairros B, tbl_cidades C WHERE B.id_cidade = C.id_cidade and B.nome_bairro LIKE ? ORDER BY B.id_bairro");
              stm.setString(1,bairro.getNomeCidade()+"%");
              rs = stm.executeQuery();
              
              while(rs.next()){
-                  dados.add(new Object[]{rs.getInt("id_bairro"),rs.getString("nomeBairro"),rs.getString("nomeCidade")});
+                  dados.add(new Object[]{rs.getInt("id_bairro"),rs.getString("nome_bairro"),rs.getString("nome_cidade")});
              }
              con.close();
              stm.close();
@@ -50,13 +50,13 @@ public class CadastroBairro {
     public void listaCidade(JComboBox e){
       try {
           con = conexaoDB.getConexao();
-          stm = con.prepareStatement(sql="SELECT id_cidade,nomeCidade FROM tbl_cidades");
+          stm = con.prepareStatement(sql="SELECT id_cidade,nome_cidade FROM tbl_cidades");
           rs = stm.executeQuery();
           
       while(rs.next()){
           Cidade cidade = new Cidade();
           cidade.setCodigocidade(rs.getInt("id_cidade"));
-          cidade.setNome(rs.getString("nomeCidade"));
+          cidade.setNome(rs.getString("nome_cidade"));
           e.addItem(cidade);
           //e.addItem(rs.getInt("id_cidade")+" . "+rs.getString("nomeCidade"));
           }
@@ -70,7 +70,7 @@ public class CadastroBairro {
      public void IncluirBairro(Bairro c) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="INSERT INTO tbl_bairros (nomeBairro,id_cidade) VALUES (?,?)");
+            stm = con.prepareStatement(sql="INSERT INTO tbl_bairros (nome_bairro,id_cidade) VALUES (?,?)");
             stm.setString(1, c.getNomeBairro());
             stm.setInt(2, c.getCodigocidade());
             stm.execute();
@@ -88,7 +88,7 @@ public class CadastroBairro {
      public void atualizarBairro(Bairro bairro) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="UPDATE tbl_bairros SET nomeBairro=?,id_cidade=? WHERE id_bairro=?");
+            stm = con.prepareStatement(sql="UPDATE tbl_bairros SET nome_bairro=?,id_cidade=? WHERE id_bairro=?");
             stm.setString(1, bairro.getNomeBairro());
             stm.setInt(2, bairro.getCodigocidade());
             stm.setInt(3,bairro.getCodigobairro());

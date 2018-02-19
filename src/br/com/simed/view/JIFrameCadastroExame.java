@@ -24,6 +24,7 @@ public class JIFrameCadastroExame extends javax.swing.JInternalFrame {
     /**
      * Creates new form JIFrameCadastroExames
      */
+    public int contador;
     public JIFrameCadastroExame() {
         initComponents();
         TabelaExamesCadastrados();
@@ -201,18 +202,20 @@ public class JIFrameCadastroExame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
+       contador = 2;
        limparCampos();
        jText_NomeExame.setEnabled(false);
 
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
     private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
+    contador = 2;
     novo();
     TabelaExamesCadastrados();
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-       if(!(jText_IdExame.getText().isEmpty() | jText_NomeExame.getText().isEmpty())){
+       if(contador == 1){
        atualizar();
        novo();
        }else{
@@ -223,6 +226,7 @@ public class JIFrameCadastroExame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton_SalvarActionPerformed
 
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
+    contador = 2;
     excluir();
     jText_NomeExame.setEnabled(false);
 
@@ -230,7 +234,7 @@ public class JIFrameCadastroExame extends javax.swing.JInternalFrame {
 
     private void jTable_Exames_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Exames_CadastradosMouseClicked
         if(evt.getClickCount() == 2) {
-            
+            contador = 1;
             jText_NomeExame.setEnabled(true);
             int linha = jTable_Exames_Cadastrados.getSelectedRow();
             jText_IdExame.setText(String.valueOf(jTable_Exames_Cadastrados.getValueAt(linha, 0)));

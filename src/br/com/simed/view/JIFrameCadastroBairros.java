@@ -25,6 +25,7 @@ public class JIFrameCadastroBairros extends javax.swing.JInternalFrame {
     /**
      * Creates new form JIFrameCadastroBairros
      */
+    public int contador;
     public JIFrameCadastroBairros() {
         initComponents();
         TabelaBairroCadastrados();
@@ -67,6 +68,8 @@ public void setPosicao() {
         jButton_Sair = new javax.swing.JButton();
 
         setTitle("Cadastro de Bairros - SIMED");
+
+        jText_NomeBairro.setEnabled(false);
 
         jLabel3.setText("ID Bairro: ");
 
@@ -219,6 +222,7 @@ public void setPosicao() {
         limparCampos();
         jText_NomeBairro.setEnabled(false);
         CBCidade.setEnabled(false);
+        contador = 2;
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
     private void jText_Buscar_NomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jText_Buscar_NomeCaretUpdate
@@ -230,10 +234,11 @@ public void setPosicao() {
         novo();
         TabelaBairroCadastrados();
         limparCampos();
+        contador = 2;
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-       if(!(jText_IdBairro.getText().isEmpty() | jText_NomeBairro.getText().isEmpty()| CBCidade.getSelectedItem().toString().isEmpty())){
+       if(contador == 1){
            atualizar();
            novo();
             TabelaBairroCadastrados();
@@ -247,7 +252,7 @@ public void setPosicao() {
 
     private void jTable_Bairros_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Bairros_CadastradosMouseClicked
         if(evt.getClickCount() == 2) {
-
+            contador = 1;
             int linha = jTable_Bairros_Cadastrados.getSelectedRow();
             jText_IdBairro.setText(String.valueOf(jTable_Bairros_Cadastrados.getValueAt(linha, 0)));
             jText_NomeBairro.setText(String.valueOf(jTable_Bairros_Cadastrados.getValueAt(linha, 1)));
@@ -266,6 +271,7 @@ public void setPosicao() {
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
         excluir();
         TabelaBairroCadastrados();
+        contador = 2;
     }//GEN-LAST:event_jButton_ExcluirActionPerformed
 
 
@@ -297,7 +303,7 @@ private void novo() {
  private void limparCampos() {
       jText_NomeBairro.setText("");
       jText_IdBairro.setText("");
-      CBCidade.setSelectedItem("");
+      CBCidade.setSelectedItem(null);
 
        // jText_NomeBairro.setEditable(false);
         //CBCidade.setEditable(false);

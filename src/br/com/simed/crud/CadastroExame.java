@@ -1,7 +1,6 @@
 package br.com.simed.crud;
 
 import br.com.simed.dao.conexaoDB;
-import br.com.simed.model.Estado;
 import br.com.simed.model.Exame;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

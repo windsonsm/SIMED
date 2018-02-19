@@ -45,15 +45,17 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         JDesktopPanePrincipal = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuCadastroCep = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuCadastrocidades = new javax.swing.JMenuItem();
         jMenuCadastroEstados = new javax.swing.JMenuItem();
-        jMenuCadastroCep = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
@@ -66,15 +68,43 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         JDesktopPanePrincipal.setOpaque(false);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/simed/images/icons/if_Hospital_22911.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(437, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(323, 323, 323))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jLabel1)
+                .addContainerGap(423, Short.MAX_VALUE))
+        );
+
+        JDesktopPanePrincipal.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout JDesktopPanePrincipalLayout = new javax.swing.GroupLayout(JDesktopPanePrincipal);
         JDesktopPanePrincipal.setLayout(JDesktopPanePrincipalLayout);
         JDesktopPanePrincipalLayout.setHorizontalGroup(
             JDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
+            .addGroup(JDesktopPanePrincipalLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JDesktopPanePrincipalLayout.setVerticalGroup(
             JDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 579, Short.MAX_VALUE)
+            .addGroup(JDesktopPanePrincipalLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu3.setText("Sistema");
@@ -91,6 +121,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Cadastros");
         jMenu1.add(jSeparator1);
+
+        jMenuCadastroCep.setText("Cadastro de Cep");
+        jMenuCadastroCep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastroCepActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCadastroCep);
 
         jMenuItem1.setText("Cadastro de Bairros");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,14 +153,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuCadastroEstados);
-
-        jMenuCadastroCep.setText("Cadastro de Cep");
-        jMenuCadastroCep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCadastroCepActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuCadastroCep);
         jMenu1.add(jSeparator2);
 
         jMenuItem4.setText("Cadastro de Empresas");
@@ -336,6 +366,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane JDesktopPanePrincipal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -349,6 +380,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;

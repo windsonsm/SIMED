@@ -25,7 +25,9 @@ public class JIFrameCadastroCidade extends javax.swing.JInternalFrame {
     /**
      * Creates new form JIFrameCadastroCidade
      */
+    public int contador;
     public JIFrameCadastroCidade() {
+        
         initComponents();
         TabelaCidadeCadastrados();
         
@@ -242,12 +244,14 @@ public void setPosicao() {
     }//GEN-LAST:event_jText_Buscar_NomeCaretUpdate
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
+        contador = 2;
         limparCampos();
         jText_NomeCidade.setEnabled(false);
         CBEstado.setEnabled(false);
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
+        contador = 2;
         excluir();
         TabelaCidadeCadastrados();
     }//GEN-LAST:event_jButton_ExcluirActionPerformed
@@ -259,7 +263,7 @@ public void setPosicao() {
 
     private void jTable_Cidades_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Cidades_CadastradosMouseClicked
         if(evt.getClickCount() == 2) {
-
+            contador = 1;
             int linha = jTable_Cidades_Cadastrados.getSelectedRow();
             jText_IdCidade.setText(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 0)));
             jText_NomeCidade.setText(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 1)));
@@ -271,18 +275,21 @@ public void setPosicao() {
     }//GEN-LAST:event_jTable_Cidades_CadastradosMouseClicked
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-        if(!(jText_IdCidade.getText().isEmpty() | jText_NomeCidade.getText().isEmpty()| CBEstado.getSelectedItem().toString().isEmpty())){
-            atualizar();
-            novo();
-            TabelaCidadeCadastrados();
+   if( contador == 1 ){
+          atualizar();
+          novo();  
+          TabelaCidadeCadastrados();
+        
         }else{
-            salvar();
-            novo();
-            TabelaCidadeCadastrados();
+          salvar();
+          novo();
+          TabelaCidadeCadastrados();
         }
+
     }//GEN-LAST:event_jButton_SalvarActionPerformed
 
     private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
+        contador = 2;
         listarSigla();
         novo();
         TabelaCidadeCadastrados();
@@ -325,7 +332,7 @@ private void novo() {
  private void limparCampos() {
       jText_NomeCidade.setText("");
       jText_IdCidade.setText("");
-      CBEstado.setSelectedItem("");
+      CBEstado.setSelectedItem(null);
 
        // jText_NomeCidade.setEditable(false);
         //CBEstado.setEditable(false);
@@ -357,7 +364,7 @@ private void novo() {
         cidade.setNome(jText_Buscar_Nome.getText().toUpperCase().trim());
         
         ArrayList dados = cidades_cadastrados.listarCidade(cidade);
-        String[] colunas = new String[]{"ID", "NOME", "SIGLA"};
+        String[] colunas = new String[]{"ID", "NOME", "ESTADO"};
         Tabela modelo = new Tabela(dados, colunas);
         jTable_Cidades_Cadastrados.setModel(modelo);
         jTable_Cidades_Cadastrados.getColumnModel().getColumn(0).setPreferredWidth(80);

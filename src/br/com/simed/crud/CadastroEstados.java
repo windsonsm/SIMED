@@ -31,7 +31,7 @@ public class CadastroEstados {
     public void incluirEstado(Estado estado) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="INSERT INTO TBL_UF(SIGLA,nomeEstado) VALUES (?,?)");
+            stm = con.prepareStatement(sql="INSERT INTO TBL_UF(SIGLA,nome_estado) VALUES (?,?)");
             stm.setString(1, estado.getSiglaEstado());
             stm.setString(2, estado.getNomeEstado());
             stm.execute();
@@ -65,7 +65,7 @@ public class CadastroEstados {
     public void atualizarEstado(Estado estado) {
         try {
             con = conexaoDB.getConexao();
-            stm = con.prepareStatement(sql="UPDATE tbl_uf SET sigla=?,nomeEstado=? WHERE id_estado=?");
+            stm = con.prepareStatement(sql="UPDATE tbl_uf SET sigla=?,nome_estado=? WHERE id_estado=?");
             stm.setString(1, estado.getSiglaEstado());
             stm.setString(2, estado.getNomeEstado());
             stm.setInt(3,estado.getCodigoEstado());
@@ -82,12 +82,12 @@ public class CadastroEstados {
         ArrayList dados = new ArrayList();
         try {
              con = conexaoDB.getConexao();
-             stm = con.prepareStatement(sql="SELECT * FROM tbl_uf WHERE nomeEstado LIKE ? ORDER BY id_estado");
+             stm = con.prepareStatement(sql="SELECT * FROM tbl_uf WHERE nome_estado LIKE ? ORDER BY id_estado");
              stm.setString(1,estado.getNomeEstado()+"%");
              rs = stm.executeQuery();
              
              while(rs.next()){
-                  dados.add(new Object[]{rs.getInt("id_estado"),rs.getString("nomeEstado"),rs.getString("sigla")});
+                  dados.add(new Object[]{rs.getInt("id_estado"),rs.getString("nome_estado"),rs.getString("sigla")});
              }
              con.close();
              stm.close();

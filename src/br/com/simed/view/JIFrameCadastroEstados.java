@@ -23,6 +23,7 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
     /**
      * Creates new form JIFrameEstado
      */
+    public int contador;
     public JIFrameCadastroEstados() {
         initComponents();
         TabelaEstadosCadastrados();
@@ -217,7 +218,7 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
 
     private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
        
-     
+       contador = 2;
        novo();
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
@@ -228,17 +229,20 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
        limparCampos();
+       contador = 2;
         
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-        if(!(jText_NomeEstado.getText().isEmpty() | jText_SiglaEstado.getText().isEmpty()| jText_IdEstado.getText().isEmpty())){
-            atualizar();
-            novo();
+        if( contador == 1 ){
+          atualizar();
+          novo();  
+        
         }else{
-            salvar();
-            novo();
+          salvar();
+          novo();
         }
+       
     }//GEN-LAST:event_jButton_SalvarActionPerformed
 
     private void jText_Buscar_NomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jText_Buscar_NomeCaretUpdate
@@ -247,7 +251,7 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
 
     private void jTable_Estados_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Estados_CadastradosMouseClicked
         if(evt.getClickCount() == 2) {
-            
+            contador = 1;
             jText_NomeEstado.setEditable(true);
             jText_SiglaEstado.setEditable(true);
             int linha = jTable_Estados_Cadastrados.getSelectedRow();
@@ -260,9 +264,8 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable_Estados_CadastradosMouseClicked
 
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
-        
-       
         excluir();
+        contador = 2;
         
     }//GEN-LAST:event_jButton_ExcluirActionPerformed
 

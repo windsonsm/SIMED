@@ -22,7 +22,7 @@ import javax.swing.ListSelectionModel;
  * @author Ranster
  */
 public class JIFrameCadastroResultados extends javax.swing.JInternalFrame {
-private int soma; 
+private int contador; 
      public JIFrameCadastroResultados() {
         initComponents();
         TabelaResultadosCadastrados();
@@ -215,11 +215,13 @@ public void listarExame(){
     }//GEN-LAST:event_jButton_SairActionPerformed
 
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
-       excluir();
+        contador = 2;
+        excluir();
         //TabelaCidadeCadastrados();
     }//GEN-LAST:event_jButton_ExcluirActionPerformed
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
+        contador = 2;
         limparCampos();
         jText_NomeResultado.setEnabled(false);
         CBExame.setEnabled(false);
@@ -234,11 +236,12 @@ public void listarExame(){
     }//GEN-LAST:event_jText_Buscar_NomeCaretUpdate
 
     private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
-      novo();
+        contador = 2;
+        novo();
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-        if(soma == 2){
+        if(contador == 1){
            atualizar();
            novo();
         }else{
@@ -251,7 +254,7 @@ public void listarExame(){
     private void jTable_Resultados_CadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Resultados_CadastradosMouseClicked
         if(evt.getClickCount() == 2) {
             listarExame();
-            soma = 2;
+            contador = 1;
             jText_NomeResultado.setEnabled(true);
             CBExame.setEnabled(true);
             int linha = jTable_Resultados_Cadastrados.getSelectedRow();
@@ -286,7 +289,6 @@ private void novo() {
         listarExame();
         jText_NomeResultado.setEnabled(true);
         CBExame.setEnabled(true);
-        soma = 1;
     }
 
  private void limparCampos() {

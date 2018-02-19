@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 
 public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
 
-    public int test;
+    public int contador;
     public JIFrameCadastroCep() {
         initComponents();
         TabelaCepCadastrados();
@@ -221,7 +221,7 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
-        test = 2;
+        contador = 2;
         listarBairro();
         novo();
         limparCampos();
@@ -229,11 +229,11 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
-      if(test == 1){
+      if(contador == 1){
             atualizar();
             novo();
             //TabelaCidadeCadastrados();
-        }else if (test == 2){
+        }else{
             salvar();
             novo();
         }
@@ -243,14 +243,14 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
         excluir();
         TabelaCepCadastrados();
-       test = 2;
+       contador = 2;
     }//GEN-LAST:event_jButton_ExcluirActionPerformed
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
        // limparCampos();
         //jText_NomeBairro.setEnabled(false);
        // CBCidade.setEnabled(false);
-       test = 2;
+       contador = 2;
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
     private void jText_Buscar_NomeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jText_Buscar_NomeCaretUpdate
@@ -264,7 +264,7 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
             jText_IdCep.setText(String.valueOf(jTable_Cep_Cadastrados.getValueAt(linha, 0)));
             jText_NomeLogradouro.setText(String.valueOf(jTable_Cep_Cadastrados.getValueAt(linha, 1)));
             CBBairro.setSelectedItem(String.valueOf(jTable_Cep_Cadastrados.getValueAt(linha, 2)));
-            test = 1;
+            contador = 1;
             jText_NomeLogradouro.setEnabled(true);
             jText_IdCep.setEnabled(true);
             CBBairro.setEnabled(true);

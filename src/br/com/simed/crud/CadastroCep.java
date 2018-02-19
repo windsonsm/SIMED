@@ -25,13 +25,13 @@ public class CadastroCep {
         ArrayList dados = new ArrayList();
         try {
              con = conexaoDB.getConexao();
-             stm = con.prepareStatement(sql="SELECT  C.cep, C.logradouro, B.nomeBairro FROM tbl_cep C, tbl_bairros B WHERE C.id_bairro = B.id_bairro ");
+             stm = con.prepareStatement(sql="SELECT  C.cep, C.logradouro, B.nome_bairro FROM tbl_cep C, tbl_bairros B WHERE C.id_bairro = B.id_bairro ");
              //and C.cep LIKE ? ORDER BY B.id_cep
              //stm.setString(1,cep.getCodigo()+"%");
              rs = stm.executeQuery();
              
              while(rs.next()){
-                  dados.add(new Object[]{rs.getInt("cep"),rs.getString("logradouro"),rs.getString("nomeBairro")});
+                  dados.add(new Object[]{rs.getInt("cep"),rs.getString("logradouro"),rs.getString("nome_bairro")});
              }
              con.close();
              stm.close();
@@ -46,13 +46,13 @@ public class CadastroCep {
      public void listaBairro(JComboBox e){
       try {
           con = conexaoDB.getConexao();
-          stm = con.prepareStatement(sql="SELECT id_Bairro,nomeBairro FROM tbl_bairros");
+          stm = con.prepareStatement(sql="SELECT id_Bairro,nome_bairro FROM tbl_bairros");
           rs = stm.executeQuery();
           
       while(rs.next()){
           Bairro bairro = new Bairro();
           bairro.setCodigobairro(rs.getInt("id_Bairro"));
-          bairro.setNomeBairro(rs.getString("nomeBairro"));
+          bairro.setNomeBairro(rs.getString("nome_bairro"));
           e.addItem(bairro);
           //e.addItem(rs.getInt("id_cidade")+" . "+rs.getString("nomeCidade"));
           }
