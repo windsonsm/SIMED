@@ -87,11 +87,14 @@ public void setPosicao() {
 
         jLabel1.setText("Nome: ");
 
+        jText_NomeCidade.setDocument(new br.com.simed.controller.SetUpperCase(100)
+        );
+        jText_NomeCidade.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jText_NomeCidade.setEnabled(false);
 
         jLabel2.setText("Estado: ");
 
-        jLabel3.setText("ID Cidade:");
+        jLabel3.setText("código: ");
 
         jButton_Ignorar.setText("Ignorar");
         jButton_Ignorar.addActionListener(new java.awt.event.ActionListener() {
@@ -165,13 +168,6 @@ public void setPosicao() {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jText_NomeCidade))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -189,7 +185,13 @@ public void setPosicao() {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton_Excluir)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton_Ignorar)))
+                                        .addComponent(jButton_Ignorar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jText_NomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -213,14 +215,12 @@ public void setPosicao() {
                     .addComponent(jButton_Novo)
                     .addComponent(jButton_Salvar)
                     .addComponent(jButton_Excluir)
-                    .addComponent(jButton_Ignorar))
+                    .addComponent(jButton_Ignorar)
+                    .addComponent(jButton_Sair))
                 .addGap(27, 27, 27)
                 .addComponent(jText_Buscar_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_Sair)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -244,7 +244,6 @@ public void setPosicao() {
     }//GEN-LAST:event_jText_Buscar_NomeCaretUpdate
 
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
-        contador = 2;
         limparCampos();
         jText_NomeCidade.setEnabled(false);
         CBEstado.setEnabled(false);
