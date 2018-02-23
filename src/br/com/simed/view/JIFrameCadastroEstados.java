@@ -69,6 +69,8 @@ public class JIFrameCadastroEstados extends javax.swing.JInternalFrame {
         jText_NomeEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jText_SiglaEstado.setEditable(false);
+        jText_SiglaEstado.setDocument(new br.com.simed.controller.CampoSring(2)
+        );
 
         jButton_Salvar.setText("Salvar");
         jButton_Salvar.addActionListener(new java.awt.event.ActionListener() {

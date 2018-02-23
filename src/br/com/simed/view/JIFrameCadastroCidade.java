@@ -38,9 +38,8 @@ public class JIFrameCadastroCidade extends javax.swing.JInternalFrame {
     public void listarSigla(){
          
           CadastroCidade c = new CadastroCidade();
-          c.listaEstado(CBEstado);
-          
-     } 
+          c.listaEstado(jComboBoxEstado);
+      } 
     
     
 public void setPosicao() {
@@ -60,7 +59,7 @@ public void setPosicao() {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jText_IdCidade = new javax.swing.JTextField();
-        CBEstado = new javax.swing.JComboBox<>();
+        jComboBoxEstado = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jText_NomeCidade = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -78,10 +77,10 @@ public void setPosicao() {
 
         jText_IdCidade.setEnabled(false);
 
-        CBEstado.setEnabled(false);
-        CBEstado.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxEstado.setEnabled(false);
+        jComboBoxEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBEstadoActionPerformed(evt);
+                jComboBoxEstadoActionPerformed(evt);
             }
         });
 
@@ -173,7 +172,7 @@ public void setPosicao() {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(CBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,7 +208,7 @@ public void setPosicao() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(CBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_Novo)
@@ -246,7 +245,7 @@ public void setPosicao() {
     private void jButton_IgnorarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IgnorarActionPerformed
         limparCampos();
         jText_NomeCidade.setEnabled(false);
-        CBEstado.setEnabled(false);
+        jComboBoxEstado.setEnabled(false);
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
@@ -268,11 +267,11 @@ public void setPosicao() {
             int idCidade = (int) (jTable_Cidades_Cadastrados.getValueAt(linha, 0));
             jText_IdCidade.setText(String.valueOf(idCidade));
             jText_NomeCidade.setText(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 1)));
-            CBEstado.setSelectedItem(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 2)));
+            jComboBoxEstado.setSelectedItem(String.valueOf(jTable_Cidades_Cadastrados.getValueAt(linha, 2)));
             
             CadastroCidade c = new CadastroCidade();
-            CBEstado.removeAllItems();
-            c.listaEstado1(idCidade, CBEstado);
+            jComboBoxEstado.removeAllItems();
+            c.listaEstado1(idCidade, jComboBoxEstado);
             //  CBEstado.getSelectedItem().toString(jTable_Cidades_Cadastrados.getValueAt(linha, 1));
 
         }
@@ -300,18 +299,18 @@ public void setPosicao() {
         limparCampos();
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
-    private void CBEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBEstadoActionPerformed
+    private void jComboBoxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEstadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CBEstadoActionPerformed
+    }//GEN-LAST:event_jComboBoxEstadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Object> CBEstado;
     private javax.swing.JButton jButton_Excluir;
     private javax.swing.JButton jButton_Ignorar;
     private javax.swing.JButton jButton_Novo;
     private javax.swing.JButton jButton_Sair;
     private javax.swing.JButton jButton_Salvar;
+    private javax.swing.JComboBox<Object> jComboBoxEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -327,14 +326,14 @@ public void setPosicao() {
 private void novo() {
         limparCampos();
         jText_NomeCidade.setEnabled(true);
-        CBEstado.setEnabled(true);
+        jComboBoxEstado.setEnabled(true);
 
     }
 
  private void limparCampos() {
       jText_NomeCidade.setText("");
       jText_IdCidade.setText("");
-      CBEstado.setSelectedItem(null);
+      jComboBoxEstado.setSelectedItem(null);
 
        // jText_NomeCidade.setEditable(false);
         //CBEstado.setEditable(false);
@@ -344,11 +343,11 @@ private void novo() {
     }
   private void salvar() {
         
-        if(!(jText_NomeCidade.getText().isEmpty() | CBEstado.getSelectedItem().toString().isEmpty())){
+        if(!(jText_NomeCidade.getText().isEmpty() | jComboBoxEstado.getSelectedItem().toString().isEmpty())){
             Cidade cidade = new Cidade();
             
             cidade.setNome(jText_NomeCidade.getText().trim().toUpperCase());
-            int codEstado = ((Estado) CBEstado.getSelectedItem()).getCodigoEstado();
+            int codEstado = ((Estado) jComboBoxEstado.getSelectedItem()).getCodigoEstado();
             cidade.setCodigoEstado(codEstado);
 
             CadastroCidade cadastrar = new CadastroCidade();
@@ -382,7 +381,7 @@ private void novo() {
 
     }
     private void excluir() {
-        if (!(jText_NomeCidade.getText().isEmpty() && CBEstado.getSelectedItem().toString().isEmpty())) {
+        if (!(jText_NomeCidade.getText().isEmpty() && jComboBoxEstado.getSelectedItem().toString().isEmpty())) {
 
             int opcao = JOptionPane.showConfirmDialog(this, "Deseja Realmente Excluir este Registro", "", JOptionPane.YES_NO_OPTION);
             boolean resposta;
@@ -402,10 +401,10 @@ private void novo() {
     }
     private void atualizar() {
         
-        if(!(jText_NomeCidade.getText().isEmpty() | CBEstado.getSelectedItem().toString().isEmpty())){
+        if(!(jText_NomeCidade.getText().isEmpty() | jComboBoxEstado.getSelectedItem().toString().isEmpty())){
             Cidade cidade = new Cidade();
             cidade.setNome(jText_NomeCidade.getText().trim().toUpperCase());
-            int codEstado = ((Estado) CBEstado.getSelectedItem()).getCodigoEstado();
+            int codEstado = ((Estado) jComboBoxEstado.getSelectedItem()).getCodigoEstado();
             cidade.setCodigoEstado(codEstado);
             cidade.setCodigocidade(Integer.valueOf(jText_IdCidade.getText().trim()));
             

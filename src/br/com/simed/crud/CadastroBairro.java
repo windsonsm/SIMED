@@ -47,26 +47,7 @@ public class CadastroBairro {
         }
         return dados;
     }
-    public void listaCidade(JComboBox e){
-      try {
-          con = conexaoDB.getConexao();
-          stm = con.prepareStatement(sql="SELECT id_cidade,nome_cidade FROM tbl_cidades");
-          rs = stm.executeQuery();
-          
-      while(rs.next()){
-          Cidade cidade = new Cidade();
-          cidade.setCodigocidade(rs.getInt("id_cidade"));
-          cidade.setNome(rs.getString("nome_cidade"));
-          e.addItem(cidade);
-          //e.addItem(rs.getInt("id_cidade")+" . "+rs.getString("nomeCidade"));
-          }
-          con.close();
-          stm.close();
-          rs.close();
-      } catch (SQLException ex) {
-          Logger.getLogger(CadastroBairro.class.getName()).log(Level.SEVERE, null, ex);
-      }
-}
+    
      public void IncluirBairro(Bairro c) {
         try {
             con = conexaoDB.getConexao();
@@ -114,4 +95,70 @@ public class CadastroBairro {
         }
                 
     }
+     public void listaCidade1(int idBairro,JComboBox e  ){
+      try {
+          con = conexaoDB.getConexao();
+          stm = con.prepareStatement(sql = "SELECT  A.ID_CIDADE,A.NOME_CIDADE FROM TBL_CIDADES A, tbl_BAIRROS B WHERE A.ID_CIDADE = B.ID_CIDADE AND\n" +
+           "B.ID_BAIRRO = ?");
+          stm.setInt(1,idBairro);
+          rs = stm.executeQuery();
+          
+      while(rs.next()){
+          Cidade cidade = new Cidade();
+          cidade.setCodigocidade(rs.getInt("ID_CIDADE"));
+          cidade.setNome(rs.getString("NOME_CIDADE"));
+          e.addItem(cidade);
+              //e.addItem(rs.getInt("id_estado")+" . "+rs.getString("nome"));
+          }
+          
+          con.close();
+          stm.close();
+          rs.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(CadastroCidade.class.getName()).log(Level.SEVERE, null, ex);
+      }
+}
+     public void listaEstado(int idBairro,JComboBox e  ){
+      try {
+          con = conexaoDB.getConexao();
+          stm = con.prepareStatement(sql = "select A.ID_BAIRRO B, C.ID_ESTADO, C.NOME_ESTADO FROM TBL_BAIRROS A ,TBL_CIDADES B,TBL_UF C WHERE A.ID_CIDADE = B.ID_CIDADE AND B.ID_ESTADO = C.ID_ESTADO and A.ID_BAIRRO = ? ");
+          stm.setInt(1,idBairro);
+          rs = stm.executeQuery();
+          
+      while(rs.next()){
+          Estado estado = new Estado();
+          estado.setCodigoEstado(rs.getInt("id_ESTADO"));
+          estado.setNomeEstado(rs.getString("nome_ESTADO"));
+          e.addItem(estado);
+          }
+          
+          con.close();
+          stm.close();
+          rs.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(CadastroCidade.class.getName()).log(Level.SEVERE, null, ex);
+      }
+}
+      public void listaCidade(int codigoEstado,JComboBox e  ){
+      try {
+          con = conexaoDB.getConexao();
+          stm = con.prepareStatement(sql = "select A.ID_Cidade, A.NOME_CIDADE FROM TBL_cidades A ,TBL_uf B WHERE A.ID_ESTADO = B.ID_ESTADO AND B.ID_ESTADO = ?");
+          stm.setInt(1,codigoEstado);
+          rs = stm.executeQuery();
+          
+      while(rs.next()){
+          Cidade cidade = new Cidade();
+          
+          cidade.setCodigocidade(rs.getInt("ID_Cidade"));
+          cidade.setNome(rs.getString("NOME_CIDADE"));
+          e.addItem(cidade);
+          }
+          
+          con.close();
+          stm.close();
+          rs.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(CadastroCidade.class.getName()).log(Level.SEVERE, null, ex);
+      }
+}
 }
