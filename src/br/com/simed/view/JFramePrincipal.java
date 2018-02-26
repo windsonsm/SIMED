@@ -21,7 +21,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private static JIFrameCadastroCidade CadastroCidades;
     private static JIFrameCadastroBairros CadastroBairros;
     private static JIFrameCadastroCep CadastroCep;
-    private static JIFrameCadastroEmpresas CadastroEmpresa;
+    private static JIFrameCadastroEmpresa CadastroEmpresa;
     private static JIFrameCadastroExame CadastroExame;
     private static JIFrameCadastroResultados CadastroResultados;
     
@@ -52,12 +52,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuCadastroCep = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuCadastrocidades = new javax.swing.JMenuItem();
         jMenuCadastroEstados = new javax.swing.JMenuItem();
+        jMenuCadastrocidades = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuCadastroCep = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -122,21 +124,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu1.setText("Cadastros");
         jMenu1.add(jSeparator1);
 
-        jMenuCadastroCep.setText("Cadastro de Cep");
-        jMenuCadastroCep.addActionListener(new java.awt.event.ActionListener() {
+        jMenuCadastroEstados.setText("Cadastro de Estados");
+        jMenuCadastroEstados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCadastroCepActionPerformed(evt);
+                jMenuCadastroEstadosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuCadastroCep);
-
-        jMenuItem1.setText("Cadastro de Bairros");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuCadastroEstados);
 
         jMenuCadastrocidades.setText("Cadastro de Cidades");
         jMenuCadastrocidades.addActionListener(new java.awt.event.ActionListener() {
@@ -146,14 +140,24 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuCadastrocidades);
 
-        jMenuCadastroEstados.setText("Cadastro de Estados");
-        jMenuCadastroEstados.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Cadastro de Bairros");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCadastroEstadosActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuCadastroEstados);
+        jMenu1.add(jMenuItem1);
+
+        jMenuCadastroCep.setText("Cadastro de Cep");
+        jMenuCadastroCep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastroCepActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCadastroCep);
         jMenu1.add(jSeparator2);
+
+        jMenu2.setText("Empresas");
 
         jMenuItem4.setText("Cadastro de Empresas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +165,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem8.setText("Cadastro de Função / Setor");
+        jMenu2.add(jMenuItem8);
+
+        jMenu1.add(jMenu2);
         jMenu1.add(jSeparator3);
 
         jMenuItem5.setText("Cadastro de Exames");
@@ -280,7 +289,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
          if (CadastroEmpresa == null) {
-            CadastroEmpresa = new JIFrameCadastroEmpresas();
+            CadastroEmpresa = new JIFrameCadastroEmpresa();
             JDesktopPanePrincipal.add(CadastroEmpresa);
             CadastroEmpresa.setVisible(true);
             CadastroEmpresa.setPosicao();
@@ -346,6 +355,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         CadastroEmpresa = null;
         CadastroExame = null;
         CadastroResultados = null;
+        
 
     }
       
@@ -368,6 +378,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane JDesktopPanePrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
@@ -380,6 +391,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
