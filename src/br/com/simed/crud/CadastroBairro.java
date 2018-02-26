@@ -161,4 +161,26 @@ public class CadastroBairro {
           Logger.getLogger(CadastroCidade.class.getName()).log(Level.SEVERE, null, ex);
       }
 }
+       public void listaBairro(int codigoCidade,JComboBox e  ){
+      try {
+          con = conexaoDB.getConexao();
+          stm = con.prepareStatement(sql = "select A.ID_BAIRRO, A.NOME_BAIRRO FROM TBL_BAIRROS A ,TBL_CIDADES B WHERE A.ID_CIDADE = B.ID_CIDADE AND B.ID_CIDADE = ?");
+          stm.setInt(1,codigoCidade);
+          rs = stm.executeQuery();
+          
+      while(rs.next()){
+          Bairro bairro = new Bairro();
+          
+          bairro.setCodigobairro(rs.getInt("ID_BAIRRO"));
+          bairro.setNomeBairro(rs.getString("NOME_BAIRRO"));
+          e.addItem(bairro);
+          }
+          
+          con.close();
+          stm.close();
+          rs.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(CadastroCidade.class.getName()).log(Level.SEVERE, null, ex);
+      }
+}
 }

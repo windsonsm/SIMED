@@ -26,17 +26,28 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
         initComponents();
         TabelaCepCadastrados();
     }
-    public void listarBairro(){
-         
-          CadastroCep c = new CadastroCep();
-          c.listaBairro(jComboBoxBairro);
-     } 
-
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
 
     }
+    public void listarSigla(){
+         
+          CadastroCidade c = new CadastroCidade();
+          c.listaEstado(jComboBoxEstado);
+      }
+    public void listarCidade(){
+        
+        int codigoEstado = ((Estado) jComboBoxEstado.getSelectedItem()).getCodigoEstado();
+        CadastroBairro c = new CadastroBairro();
+         c.listaCidade(codigoEstado,jComboBoxCidade);
+      }
+    public void listarBairro(){
+        
+        int codigoCidade = ((Cidade) jComboBoxCidade.getSelectedItem()).getCodigocidade();
+        CadastroBairro c = new CadastroBairro();
+         c.listaBairro(codigoCidade,jComboBoxBairro);
+      }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -58,8 +69,8 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
         jTable_Cep_Cadastrados = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxEstado = new javax.swing.JComboBox<>();
+        jComboBoxCidade = new javax.swing.JComboBox<>();
 
         setTitle("Cadastro de Cep - SIMED");
 
@@ -75,6 +86,15 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
         jLabel3.setText("Bairro: ");
 
         jComboBoxBairro.setEnabled(false);
+        jComboBoxBairro.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxBairroPopupMenuWillBecomeVisible(evt);
+            }
+        });
 
         jButton_Ignorar.setText("Ignorar");
         jButton_Ignorar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,9 +159,23 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Cidade: ");
 
-        jComboBox1.setEnabled(false);
+        jComboBoxEstado.setEnabled(false);
+        jComboBoxEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEstadoActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setEnabled(false);
+        jComboBoxCidade.setEnabled(false);
+        jComboBoxCidade.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxCidadePopupMenuWillBecomeVisible(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -172,11 +206,11 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jComboBoxCidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jComboBoxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,11 +241,11 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -248,7 +282,8 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
 
     private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
         contador = 2;
-        listarBairro();
+        listarSigla();
+        //listarBairro();
         novo();
         limparCampos();
         
@@ -277,6 +312,8 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
        jText_NomeLogradouro.setEnabled(false);
        jText_IdCep.setEnabled(false);
        jComboBoxBairro.setEnabled(false);
+       jComboBoxEstado.setEnabled(false);
+       jComboBoxCidade.setEnabled(false);
       
     }//GEN-LAST:event_jButton_IgnorarActionPerformed
 
@@ -288,6 +325,7 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
         if(evt.getClickCount() == 2) {
 
             int linha = jTable_Cep_Cadastrados.getSelectedRow();
+            int idCep = (int) (jTable_Cep_Cadastrados.getValueAt(linha, 0));
             jText_IdCep.setText(String.valueOf(jTable_Cep_Cadastrados.getValueAt(linha, 0)));
             jText_NomeLogradouro.setText(String.valueOf(jTable_Cep_Cadastrados.getValueAt(linha, 1)));
             jComboBoxBairro.setSelectedItem(String.valueOf(jTable_Cep_Cadastrados.getValueAt(linha, 2)));
@@ -295,8 +333,22 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
             jText_NomeLogradouro.setEnabled(true);
             jText_IdCep.setEnabled(true);
             jComboBoxBairro.setEnabled(true);
-            listarBairro();
-
+            jComboBoxEstado.setEnabled(true);
+            //listarBairro();
+            
+            //parte de listar nos combobox de acordo com um campo 
+            
+            CadastroCep a = new CadastroCep();
+            jComboBoxEstado.removeAllItems();
+            a.listarEstado(idCep,jComboBoxEstado);
+            
+            CadastroCep b = new CadastroCep();
+            jComboBoxCidade.removeAllItems();
+            b.listarCidade(idCep,jComboBoxCidade);
+            
+            CadastroCep c = new CadastroCep();
+            jComboBoxBairro.removeAllItems();
+            b.listarBairro(idCep,jComboBoxBairro);
         }
     }//GEN-LAST:event_jTable_Cep_CadastradosMouseClicked
 
@@ -305,6 +357,20 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
         JFramePrincipal.setTelaNull();
     }//GEN-LAST:event_jButton_SairActionPerformed
 
+    private void jComboBoxCidadePopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxCidadePopupMenuWillBecomeVisible
+        jComboBoxCidade.removeAllItems();
+         listarCidade();
+    }//GEN-LAST:event_jComboBoxCidadePopupMenuWillBecomeVisible
+
+    private void jComboBoxBairroPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxBairroPopupMenuWillBecomeVisible
+        jComboBoxBairro.removeAllItems();
+         listarBairro();
+    }//GEN-LAST:event_jComboBoxBairroPopupMenuWillBecomeVisible
+
+    private void jComboBoxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEstadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Excluir;
@@ -312,9 +378,9 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton_Novo;
     private javax.swing.JButton jButton_Sair;
     private javax.swing.JButton jButton_Salvar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBoxBairro;
+    private javax.swing.JComboBox<String> jComboBoxCidade;
+    private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -353,6 +419,8 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
     private void novo() {
         limparCampos();
         jText_NomeLogradouro.setEnabled(true);
+        jComboBoxEstado.setEnabled(true);
+        jComboBoxCidade.setEnabled(true);
         jText_IdCep.setEnabled(true);
         jComboBoxBairro.setEnabled(true);
         TabelaCepCadastrados();
@@ -362,6 +430,10 @@ public class JIFrameCadastroCep extends javax.swing.JInternalFrame {
       jText_NomeLogradouro.setText("");
       jText_IdCep.setText("");
       jComboBoxBairro.setSelectedItem("");
+      
+      jComboBoxEstado.setSelectedItem(null);
+      jComboBoxCidade.setSelectedItem(null);
+      jComboBoxBairro.setSelectedItem(null);
 
 
        

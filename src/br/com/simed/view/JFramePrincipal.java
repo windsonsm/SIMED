@@ -21,7 +21,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private static JIFrameCadastroCidade CadastroCidades;
     private static JIFrameCadastroBairros CadastroBairros;
     private static JIFrameCadastroCep CadastroCep;
-    private static JIFrameCadastroEmpresas CadastroEmpresa;
     private static JIFrameCadastroExame CadastroExame;
     private static JIFrameCadastroResultados CadastroResultados;
     
@@ -57,7 +56,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuCadastrocidades = new javax.swing.JMenuItem();
         jMenuCadastroEstados = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -152,14 +150,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuCadastroEstados);
         jMenu1.add(jSeparator2);
-
-        jMenuItem4.setText("Cadastro de Empresas");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem4);
         jMenu1.add(jSeparator3);
 
         jMenuItem5.setText("Cadastro de Exames");
@@ -276,21 +266,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuCadastroCepActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-         if (CadastroEmpresa == null) {
-            CadastroEmpresa = new JIFrameCadastroEmpresas();
-            JDesktopPanePrincipal.add(CadastroEmpresa);
-            CadastroEmpresa.setVisible(true);
-            CadastroEmpresa.setPosicao();
-        } else {
-            try {
-                CadastroEmpresa.setSelected(true);
-            } catch (PropertyVetoException ex) {
-                JOptionPane.showMessageDialog(this, ex);
-            }
-        }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         if (CadastroExame == null) {
             CadastroExame = new JIFrameCadastroExame();
@@ -345,7 +320,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         CadastroCidades = null;
         CadastroBairros = null;
         CadastroCep = null;
-        CadastroEmpresa = null;
         CadastroExame = null;
         CadastroResultados = null;
 
@@ -379,7 +353,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;

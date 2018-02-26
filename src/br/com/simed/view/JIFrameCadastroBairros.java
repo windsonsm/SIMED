@@ -35,12 +35,9 @@ public void setPosicao() {
 public void listarCidade(){
         
         int codigoEstado = ((Estado) jComboBoxEstado.getSelectedItem()).getCodigoEstado();
-       
-         CadastroBairro c = new CadastroBairro();
+        CadastroBairro c = new CadastroBairro();
          c.listaCidade(codigoEstado,jComboBoxCidade);
-         
-         
-     } 
+      } 
  public void listarSigla(){
          
           CadastroCidade c = new CadastroCidade();
@@ -80,6 +77,7 @@ public void listarCidade(){
 
         jText_IdBairro.setEnabled(false);
 
+        jComboBoxCidade.setEnabled(false);
         jComboBoxCidade.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -153,6 +151,7 @@ public void listarCidade(){
 
         jLabel4.setText("Estado : ");
 
+        jComboBoxEstado.setEnabled(false);
         jComboBoxEstado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBoxEstadoItemStateChanged(evt);
@@ -262,13 +261,9 @@ public void listarCidade(){
     }//GEN-LAST:event_jText_Buscar_NomeCaretUpdate
 
     private void jButton_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NovoActionPerformed
-                 
         limparCampos();
         novo();
-        listarSigla();
-        TabelaBairroCadastrados();  
-        
-        
+        listarSigla(); 
         contador = 2;
     }//GEN-LAST:event_jButton_NovoActionPerformed
 
@@ -302,6 +297,11 @@ public void listarCidade(){
             CadastroBairro C = new CadastroBairro();
             jComboBoxCidade.removeAllItems();
             C.listaCidade1(idBairro, jComboBoxCidade);
+            
+            
+            jText_NomeBairro.setEnabled(true);
+            jComboBoxCidade.setEnabled(true);
+            jComboBoxEstado.setEnabled(true);
             
             
          }
@@ -358,6 +358,7 @@ private void novo() {
         limparCampos();
         jText_NomeBairro.setEnabled(true);
         jComboBoxCidade.setEnabled(true);
+        jComboBoxEstado.setEnabled(true);
         listarSigla();
         jComboBoxEstadoItemStateChanged(null);
 
