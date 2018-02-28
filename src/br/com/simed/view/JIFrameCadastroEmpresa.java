@@ -769,7 +769,7 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
 
             CadastroCep cep = new CadastroCep();
 
-            if (cep.buscarCEP(c, jTextFieldLogradouro, jTextFieldBairro, jTextFieldCidade, jTextFieldUF)) {
+           if (cep.buscarCEP(c, jTextFieldLogradouro, jTextFieldBairro, jTextFieldCidade, jTextFieldUF)) {
                 jTextFieldNumero.requestFocus();
             } else {
                 int opcao = JOptionPane.showConfirmDialog(this, "CEP não encontrado, Deseja Cadastrá-lo agora ?", "", JOptionPane.YES_NO_OPTION);
@@ -777,14 +777,17 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
                 resposta = opcao == JOptionPane.YES_OPTION;
 
                 if (resposta) {
-                    JDialogCadastroCEP cad = new JDialogCadastroCEP(null, true);
+                    JDialogCadastroCep cad = new JDialogCadastroCep(null, true);
                     cad.setLocationRelativeTo(null);
                     cad.setVisible(true);
                     jFTextFieldCep.setText(cad.getCep());
                     jFTextFieldCep.requestFocusInWindow();
+                    
                 }
 
             };
+            
+            
         }
     }//GEN-LAST:event_jFTextFieldCepActionPerformed
 
