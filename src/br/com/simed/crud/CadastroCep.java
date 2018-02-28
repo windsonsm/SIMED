@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class CadastroCep {
     private PreparedStatement stm;
@@ -110,5 +111,34 @@ public class CadastroCep {
             Logger.getLogger(CadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
+    }
+
+    public boolean buscarCEP(Cep c, JTextField jTextFieldLogradouro, JTextField jTextFieldBairro, JTextField jTextFieldCidade, JTextField jTextFieldUF) {
+        boolean cepEncontrado = false;
+
+        try {
+            con = conexaoDB.getConexao();
+            stm = con.prepareStatement(sql = "select a.cep,a.logradouro,b.nome_bairro,c.nome_cidade, d.sigla from \n"
+                    + "tbl_cep a, tbl_bairros b, tbl_cidades c, tbl_uf d where\n"
+                    + "a.id_bairro = b.id_bairro and\n"
+                    + "b.id_cidade = c.id_cidade and\n"
+                    + "c.id_estado = d.id_estado and a.cep = ?");
+            stm.setInt(1, c.getCodigo());
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                cepEncontrado = true;
+                jTextFieldLogradouro.setText(rs.getString("logradouro"));
+                jTextFieldBairro.setText(rs.getString("nome_bairro"));
+                jTextFieldCidade.setText(rs.getString("nome_cidade"));
+                jTextFieldUF.setText(rs.getString("sigla"));
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Localizar Registro...");
+            Logger.getLogger(CadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cepEncontrado;
+
     }
 }
