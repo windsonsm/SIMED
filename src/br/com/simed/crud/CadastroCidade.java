@@ -37,7 +37,7 @@ public class CadastroCidade {
         
     }
     
-public void listaEstado(JComboBox e){
+public void listaEstado(JComboBox e  ){
       try {
           con = conexaoDB.getConexao();
           stm = con.prepareStatement(sql="SELECT id_estado,nome_estado FROM tbl_uf");
@@ -112,4 +112,28 @@ public void listaEstado(JComboBox e){
         }
                 
     }
+      public void listaEstado1(int idCidade,JComboBox e  ){
+      try {
+          con = conexaoDB.getConexao();
+          stm = con.prepareStatement(sql = "SELECT A.ID_ESTADO,A.NOME_ESTADO FROM TBL_UF A, TBL_CIDADES B\n"
+                  + "WHERE A.ID_ESTADO = B.ID_ESTADO AND\n"
+                  + "B.ID_CIDADE = ?");
+          stm.setInt(1,idCidade);
+          rs = stm.executeQuery();
+          
+      while(rs.next()){
+          Estado estado = new Estado();
+          estado.setCodigoEstado(rs.getInt("id_estado"));
+          estado.setNomeEstado(rs.getString("nome_estado"));
+          e.addItem(estado);
+              //e.addItem(rs.getInt("id_estado")+" . "+rs.getString("nome"));
+          }
+          
+          con.close();
+          stm.close();
+          rs.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(CadastroCidade.class.getName()).log(Level.SEVERE, null, ex);
+      }
+}
 }

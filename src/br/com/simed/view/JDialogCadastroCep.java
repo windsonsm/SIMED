@@ -5,8 +5,14 @@
  */
 package br.com.simed.view;
 
+import br.com.simed.crud.CadastroBairro;
 import br.com.simed.crud.CadastroCep;
+import br.com.simed.crud.CadastroCidade;
+import br.com.simed.model.Bairro;
 import br.com.simed.model.Cep;
+import br.com.simed.model.Cidade;
+import br.com.simed.model.Estado;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,13 +44,14 @@ String cep = "";
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldLogradouro = new javax.swing.JTextField();
-        jComboBoxUF = new javax.swing.JComboBox<>();
-        jComboBoxCidade = new javax.swing.JComboBox<>();
-        jComboBoxBairro = new javax.swing.JComboBox<>();
         jFTextFieldCep = new javax.swing.JFormattedTextField();
         jButtonSalvar = new javax.swing.JButton();
+        jComboBoxEstados = new javax.swing.JComboBox<>();
+        jComboBoxCidades = new javax.swing.JComboBox<>();
+        jComboBoxBairros = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setText("CEP:");
 
@@ -55,12 +62,6 @@ String cep = "";
         jLabel4.setText("Cidade:");
 
         jLabel5.setText("Bairro:");
-
-        jComboBoxUF.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxUFItemStateChanged(evt);
-            }
-        });
 
         try {
             jFTextFieldCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -75,6 +76,36 @@ String cep = "";
             }
         });
 
+        jComboBoxEstados.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxEstadosPopupMenuWillBecomeVisible(evt);
+            }
+        });
+
+        jComboBoxCidades.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxCidadesPopupMenuWillBecomeVisible(evt);
+            }
+        });
+
+        jComboBoxBairros.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxBairrosPopupMenuWillBecomeVisible(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -83,28 +114,31 @@ String cep = "";
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSalvar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxUF, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFTextFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                        .addComponent(jTextFieldLogradouro))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jFTextFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxCidades, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBoxBairros, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonSalvar)))
+                        .addGap(0, 119, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,44 +151,58 @@ String cep = "";
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBoxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jComboBoxEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBoxCidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
+                    .addComponent(jComboBoxBairros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonSalvar))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-       cep = jFTextFieldCep.getText();
-       dispose();
+        if (!(jFTextFieldCep.getText().equals("     -   "))) {
+            cep = jFTextFieldCep.getText();
+            salvar();
+        }
+
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-    private void jComboBoxUFItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxUFItemStateChanged
+    private void jComboBoxCidadesPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxCidadesPopupMenuWillBecomeVisible
         
-    }//GEN-LAST:event_jComboBoxUFItemStateChanged
+        listarCidade();
+    }//GEN-LAST:event_jComboBoxCidadesPopupMenuWillBecomeVisible
+
+    private void jComboBoxBairrosPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxBairrosPopupMenuWillBecomeVisible
+        
+        listarBairro();
+    }//GEN-LAST:event_jComboBoxBairrosPopupMenuWillBecomeVisible
+
+    private void jComboBoxEstadosPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxEstadosPopupMenuWillBecomeVisible
+        
+        listarSigla();
+    }//GEN-LAST:event_jComboBoxEstadosPopupMenuWillBecomeVisible
 
     public String getCep() {
 
@@ -162,34 +210,59 @@ String cep = "";
     }
     
     
+    private void listarSigla() {
+        jComboBoxEstados.removeAllItems();
+        CadastroCidade c = new CadastroCidade();
+        c.listaEstado(jComboBoxEstados);
+    }
+
+    private void listarCidade() {
+        jComboBoxCidades.removeAllItems();
+        int codigoEstado = ((Estado) jComboBoxEstados.getSelectedItem()).getCodigoEstado();
+        CadastroBairro c = new CadastroBairro();
+        c.listaCidade(codigoEstado, jComboBoxCidades);
+    }
+
+    private void listarBairro() {
+        jComboBoxBairros.removeAllItems();
+        int codigoCidade = ((Cidade) jComboBoxCidades.getSelectedItem()).getCodigocidade();
+        CadastroBairro c = new CadastroBairro();
+        c.listaBairro(codigoCidade, jComboBoxBairros);
+    }
+    
+    private void salvar() {
+        
+        if(!(jTextFieldLogradouro.getText().isEmpty() | jComboBoxBairros.getSelectedItem().toString().isEmpty())){
+            Cep cep = new Cep();
+            
+            
+            cep.setCodigo(Integer.valueOf(jFTextFieldCep.getText().replace("-", "").trim()));
+            cep.setLogradouro(jTextFieldLogradouro.getText().trim());
+            int codCep = ((Bairro) jComboBoxBairros.getSelectedItem()).getCodigobairro();
+            cep.setCodigobairro(codCep);
+            
+            CadastroCep cadastrar = new CadastroCep();
+            cadastrar.IncluirCep(cep);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Dados Inválidos");
+        }
+     } 
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CBBairro;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JButton jButton_Excluir;
-    private javax.swing.JButton jButton_Ignorar;
-    private javax.swing.JButton jButton_Novo;
-    private javax.swing.JButton jButton_Salvar;
-    private javax.swing.JComboBox<String> jComboBoxBairro;
-    private javax.swing.JComboBox<String> jComboBoxCidade;
-    private javax.swing.JComboBox<String> jComboBoxUF;
+    private javax.swing.JComboBox<String> jComboBoxBairros;
+    private javax.swing.JComboBox<String> jComboBoxCidades;
+    private javax.swing.JComboBox<String> jComboBoxEstados;
     private javax.swing.JFormattedTextField jFTextFieldCep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_Cep_Cadastrados;
     private javax.swing.JTextField jTextFieldLogradouro;
-    private javax.swing.JTextField jText_Buscar_Nome;
-    private javax.swing.JTextField jText_IdCep;
-    private javax.swing.JTextField jText_NomeLogradouro;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ package br.com.simed.view;
 import java.awt.Dimension;
 import java.beans.PropertyVetoException;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +25,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private static JIFrameCadastroEmpresa CadastroEmpresa;
     private static JIFrameCadastroExame CadastroExame;
     private static JIFrameCadastroResultados CadastroResultados;
+    private JMenuItem jMenuItemCadastroEmpresas;
     
    
       
@@ -58,8 +60,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuCadastroCep = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItemCadastroEmpresas = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -71,23 +72,22 @@ public class JFramePrincipal extends javax.swing.JFrame {
         JDesktopPanePrincipal.setOpaque(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/simed/images/icons/if_Hospital_22911.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(437, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(323, 323, 323))
+                .addContainerGap(558, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(218, 218, 218))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addGap(191, 191, 191)
                 .addComponent(jLabel1)
-                .addContainerGap(423, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
         );
 
         JDesktopPanePrincipal.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -96,17 +96,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         JDesktopPanePrincipal.setLayout(JDesktopPanePrincipalLayout);
         JDesktopPanePrincipalLayout.setHorizontalGroup(
             JDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDesktopPanePrincipalLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JDesktopPanePrincipalLayout.setVerticalGroup(
             JDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JDesktopPanePrincipalLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jMenu3.setText("Sistema");
@@ -122,6 +116,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Cadastros");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jSeparator1);
 
         jMenuCadastroEstados.setText("Cadastro de Estados");
@@ -159,16 +158,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Empresas");
 
-        jMenuItem4.setText("Cadastro de Empresas");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCadastroEmpresas.setText("Cadastro de Empresas");
+        jMenuItemCadastroEmpresas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemCadastroEmpresasActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
-
-        jMenuItem8.setText("Cadastro de Função / Setor");
-        jMenu2.add(jMenuItem8);
+        jMenu2.add(jMenuItemCadastroEmpresas);
 
         jMenu1.add(jMenu2);
         jMenu1.add(jSeparator3);
@@ -287,7 +283,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuCadastroCepActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemCadastroEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroEmpresasActionPerformed
          if (CadastroEmpresa == null) {
             CadastroEmpresa = new JIFrameCadastroEmpresa();
             JDesktopPanePrincipal.add(CadastroEmpresa);
@@ -300,7 +296,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, ex);
             }
         }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItemCadastroEmpresasActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         if (CadastroExame == null) {
@@ -332,6 +328,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
     //Libera acesso ao Frame Principal
     public static JFramePrincipal getInstancia() {
 
@@ -352,9 +352,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
         CadastroCidades = null;
         CadastroBairros = null;
         CadastroCep = null;
-        CadastroEmpresa = null;
         CadastroExame = null;
         CadastroResultados = null;
+        CadastroEmpresa = null;
         
 
     }
@@ -388,10 +388,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem8;
+    
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;

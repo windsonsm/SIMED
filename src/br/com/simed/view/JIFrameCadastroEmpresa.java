@@ -36,7 +36,7 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
     public JIFrameCadastroEmpresa() {
         initComponents();
         
-        preencherTabela();
+        
         
     }
 
@@ -153,11 +153,8 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
         jLabelNumero.setText("Numero:");
 
         jTextFieldNumero.setEditable(false);
-        jTextFieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldNumeroKeyTyped(evt);
-            }
-        });
+        jTextFieldNumero.setDocument(new br.com.simed.controller.CampoNumerico(10)
+        );
 
         jLabelBairro.setText("Bairro:");
 
@@ -289,6 +286,8 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
         jLabelSite1.setText("Contato Principal:");
 
         jTextFieldContato.setEditable(false);
+        jTextFieldContato.setDocument(new br.com.simed.controller.SetUpperCase(60)
+        );
 
         jLabel_Logo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -324,18 +323,6 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonIgnorar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,14 +368,6 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
                                             .addComponent(jButton1)
                                             .addComponent(jLabel_Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabelTelefone)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jFTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelSite)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldSite, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabelSite1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextFieldContato, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,8 +399,27 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabelNumero)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButtonIgnorar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabelTelefone)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jFTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabelSite)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTextFieldSite, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 131, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
 
@@ -490,14 +488,14 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
                     .addComponent(jFTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSite)
                     .addComponent(jTextFieldSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonIgnorar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonExcluir, jButtonIgnorar, jButtonNovo, jButtonSair, jButtonSalvar});
@@ -600,7 +598,7 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(360, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -639,7 +637,7 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 896, Short.MAX_VALUE)
+            .addGap(0, 910, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -659,17 +657,13 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
             .addComponent(jTabbedPane1)
         );
 
-        setBounds(0, 0, 917, 567);
+        setBounds(0, 0, 931, 567);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         JFramePrincipal.setTelaNull();
         dispose();        
     }//GEN-LAST:event_jButtonSairActionPerformed
-
-    private void jTextFieldNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyTyped
-        
-    }//GEN-LAST:event_jTextFieldNumeroKeyTyped
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
      Novo(); 
@@ -762,6 +756,19 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldInscricaoEstadualFocusLost
 
     private void jFTextFieldCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTextFieldCepActionPerformed
+     buscarCEP();
+        
+    }//GEN-LAST:event_jFTextFieldCepActionPerformed
+
+    
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+
+    }
+    
+    private void buscarCEP(){
         
         if (!(jFTextFieldCep.getText().equals("     -   "))) {
             Cep c = new Cep();
@@ -772,7 +779,14 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
            if (cep.buscarCEP(c, jTextFieldLogradouro, jTextFieldBairro, jTextFieldCidade, jTextFieldUF)) {
                 jTextFieldNumero.requestFocus();
             } else {
-                int opcao = JOptionPane.showConfirmDialog(this, "CEP não encontrado, Deseja Cadastrá-lo agora ?", "", JOptionPane.YES_NO_OPTION);
+                JOptionPane.showMessageDialog(this, "CEP Não Cadastrado \nEfetue");
+                JDialogCadastroCep cad = new JDialogCadastroCep(null, true);
+                cad.setLocationRelativeTo(null);
+                cad.setVisible(true);
+                jFTextFieldCep.setText(cad.getCep());
+                jFTextFieldCep.requestFocusInWindow();
+                
+                /*int opcao = JOptionPane.showConfirmDialog(this, "CEP não encontrado, Deseja Cadastrá-lo agora ?", "", JOptionPane.YES_NO_OPTION);
                 boolean resposta;
                 resposta = opcao == JOptionPane.YES_OPTION;
 
@@ -784,70 +798,12 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
                     jFTextFieldCep.requestFocusInWindow();
                     
                 }
+                */
 
             };
             
             
         }
-    }//GEN-LAST:event_jFTextFieldCepActionPerformed
-
-    public void preencherTabela() {
-        /*
-
-       Fornecedor fornecedor = new Fornecedor();
-        CadastroFornecedor Buscarfornecedor = new CadastroFornecedor();
-        fornecedor.setNome(jTextFieldLocalizar.getText().toUpperCase().trim());
-        ArrayList dados = Buscarfornecedor.localizarFornecedor(fornecedor);             
-        String[] colunas = new String[]{"CÓDIGO","NOME","CNPJ","INSCRIÇÃO","ENDEREÇO","NUMERO","BAIRRO","ESTADO","CIDADE","TELEFONE","0800","E-MAIL","SITE"};
-        
-        TabelaModelo modelo = new TabelaModelo(dados, colunas);
-        
-        jTableFornecedores.setModel(modelo);
-        jTableFornecedores.getColumnModel().getColumn(0).setPreferredWidth(70);
-        jTableFornecedores.getColumnModel().getColumn(0).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(1).setPreferredWidth(350);
-        jTableFornecedores.getColumnModel().getColumn(1).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(2).setPreferredWidth(130);
-        jTableFornecedores.getColumnModel().getColumn(2).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(3).setPreferredWidth(150);
-        jTableFornecedores.getColumnModel().getColumn(3).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(4).setPreferredWidth(300);
-        jTableFornecedores.getColumnModel().getColumn(4).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(5).setPreferredWidth(70);
-        jTableFornecedores.getColumnModel().getColumn(5).setResizable(false);        
-        jTableFornecedores.getColumnModel().getColumn(6).setPreferredWidth(150);
-        jTableFornecedores.getColumnModel().getColumn(6).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(7).setPreferredWidth(150);
-        jTableFornecedores.getColumnModel().getColumn(7).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(8).setPreferredWidth(160);
-        jTableFornecedores.getColumnModel().getColumn(8).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(9).setPreferredWidth(100);
-        jTableFornecedores.getColumnModel().getColumn(9).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(10).setPreferredWidth(100);
-        jTableFornecedores.getColumnModel().getColumn(10).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(11).setPreferredWidth(300);
-        jTableFornecedores.getColumnModel().getColumn(11).setResizable(false);
-        jTableFornecedores.getColumnModel().getColumn(12).setPreferredWidth(300);
-        jTableFornecedores.getColumnModel().getColumn(12).setResizable(false);
-        
-        
-       
-        
-        
-        jTableFornecedores.getTableHeader().setReorderingAllowed(false);
-        jTableFornecedores.setAutoResizeMode(jTableFornecedores.AUTO_RESIZE_OFF);
-        jTableFornecedores.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-      */
-        
-        
-        
-    }
-
-    public void setPosicao() {
-        Dimension d = this.getDesktopPane().getSize();
-        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
-
     }
     
     private void carregarLogo() {
@@ -886,6 +842,8 @@ public class JIFrameCadastroEmpresa extends javax.swing.JInternalFrame {
         jFTextFieldDataCadastro.setText(FormatarData.dataAgora());      
         
     }
+    
+    
     
     
     
